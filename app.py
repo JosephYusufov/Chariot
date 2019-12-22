@@ -13,18 +13,16 @@ import sqlite3
 import os
 
 
-
-
 class SQLHandler(object):
     """docstring for SQLHandler."""
 
     def __init__(self, dbname):
         super(SQLHandler, self).__init__()
         self.DB_FILE = dbname
-        self.db = sqlite3.connect(self.DB_FILE)  # open if file exists, otherwise create
-        self.c = self.db.cursor()  # facilitate db ops
 
     def run(self, command):
+        self.db = sqlite3.connect(self.DB_FILE)  # open if file exists, otherwise create
+        self.c = self.db.cursor()  # facilitate db ops
         self.c.execute(command)
         if "select" in command.lower():
             return self.c.fetchall()
@@ -37,7 +35,6 @@ class SQLHandler(object):
 
 app = Flask(__name__)  # create instance of class Flask
 app.secret_key = "dfsgdfg"
-db = SQLHandler("data.db")
 
 
 
@@ -45,7 +42,7 @@ db = SQLHandler("data.db")
 def auth():
     command = "SELECT * FROM loginfo WHERE username LIKE '{}'".format(
         request.args["username"])
-    pair = runsqlcommand(command)
+    pair = db.run(command)
     print("#######")
     print(pair)
     if len(pair) == 0:
@@ -66,7 +63,9 @@ def auth():
 
 @app.route("/")  # assign following fxn to run when root route requested
 def index():
-    return render_template('index.html')
+    if "username" in session:
+        return redirect("/welcome")
+    return redirect("/login")
 
 
 @app.route("/login")
@@ -76,13 +75,19 @@ def login():
     else:
         return render_template("login.html")
 
+@app.route("/logout")
+def logout():
+    session.pop("username")
+    flash("just loggged out")
+    return redirect("/login")
 
-# @app.route("/auth")
 
+
+@app.route("/welcome")
+def welcome():
+    return render_template('welcome.html', username = session["username"])
 
 if __name__ == "__main__":
-    db.run("insert into loginfo VALUES('kek', 'doom')")
-    print(db.run("select * from loginfo"))
-    # app.debug = True
-    # cache.cache()
-    # app.run()
+    db = SQLHandler("data.db")
+    app.debug = True
+    app.run()
