@@ -35,11 +35,33 @@ class SQLHandler(object):
 
 
 
-
-
 app = Flask(__name__)  # create instance of class Flask
 app.secret_key = "dfsgdfg"
 db = SQLHandler("data.db")
+
+
+
+@app.route("/auth")
+def auth():
+    command = "SELECT * FROM loginfo WHERE username LIKE '{}'".format(
+        request.args["username"])
+    pair = runsqlcommand(command)
+    print("#######")
+    print(pair)
+    if len(pair) == 0:
+        flash("Username not found")
+        return "username not found"
+    if pair[0][0] == request.args["username"]:
+        if pair[0][1] == request.args["password"]:
+            session["username"] = request.args["username"]
+            flash("Successfully logged in as: {}".format(session['username']))
+            print("HERE")
+            return redirect("/welcome")
+        flash("Wrong password")
+        return redirect("/login")
+    flash("Wrong username")
+    return redirect("/login")
+
 
 
 @app.route("/")  # assign following fxn to run when root route requested
