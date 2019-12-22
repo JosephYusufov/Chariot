@@ -65,8 +65,8 @@ def auth():
 def index():
     if "username" in session:
         return redirect("/welcome")
-    return redirect("/login")
-
+    # return redirect("/login")   
+    return render_template("index.html")
 
 @app.route("/login")
 def login():
@@ -85,7 +85,10 @@ def logout():
 
 @app.route("/welcome")
 def welcome():
-    return render_template('welcome.html', username = session["username"])
+    if "username" in session:
+        return render_template('welcome.html', username = session["username"])
+    return redirect("/")
+
 
 if __name__ == "__main__":
     db = SQLHandler("data.db")

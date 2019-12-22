@@ -1,14 +1,24 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>welcome</title>
-  </head>
-  <body>
-    welcome!
+<!-- <!DOCTYPE html> -->
+<!-- <html lang="en" dir="ltr"> -->
+<!--   <head> -->
+<!--     <meta charset="utf-8"> -->
+<!--     <title>welcome</title> -->
+<!--   </head> -->
+<!--   <body> -->
+<!--     welcome! -->
+<!--     {{get_flashed_messages()[0]}} -->
+
+<!--     <br> -->
+<!--     <a href="/logout"> logout</a> -->
+<!--   </body> -->
+<!-- </html> -->
+{% extends "base.html" %}
+{% block title %}Welcome{% endblock %}
+{% block header  %}Welcome{% endblock %}
+{% block content %}
     {{get_flashed_messages()[0]}}
 
     <br>
-    <a href="/logout"> logout</a>
-  </body>
-</html>
+    <a href="/logout"> <button>Logout</button> </a>
+
+{% endblock %}

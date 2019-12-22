@@ -1,2 +1,6 @@
-moodyR -- 2019-12-21 17:56 PM
+yusufovJ -- 2019-12-22 02:40 
+Templates working, commented out moody's code in case I missed anything.
+Next step: Get bootsrap in here to make this site look swanky.
+
+moodyR -- 2019-12-21 17:56 
 Boilerplate code, login TBD

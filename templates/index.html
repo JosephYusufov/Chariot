@@ -1,11 +1,21 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>index</title>
-  </head>
-  <body>
-    <a href="/login">login here</a><br>
+{% extends "base.html" %}
+{% block title %}Chariot{% endblock %}
+{% block header %}Chariot{% endblock %}
+{% block content %}
+<div class="landing">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada posuere arcu nec euismod. Quisque blandit accumsan nisi vel mollis. Aenean condimentum quis quam ac placerat. Nunc malesuada imperdiet nibh, vitae tempor nisl sagittis a. Integer gravida magna nec dui hendrerit mollis. Etiam et imperdiet sem. Nullam fringilla, lorem in auctor sagittis, mauris lorem ornare diam, non rutrum urna elit quis quam. </p>
+</div>
 
-  </body>
-</html>
+<a href="/login"><button>Login</button></a>
+{% endblock %}
+<!-- <!DOCTYPE html> -->
+<!-- <html lang="en" dir="ltr"> -->
+<!--   <head> -->
+<!--     <meta charset="utf-8"> -->
+<!--     <title>index</title> -->
+<!--   </head> -->
+<!--   <body> -->
+<!--     <a href="/login">login here</a><br> -->
+
+<!--   </body> -->
+<!-- </html> -->

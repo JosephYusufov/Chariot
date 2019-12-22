@@ -1,15 +1,26 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>login</title>
-  </head>
-  <body>
+<!-- <!DOCTYPE html> -->
+<!-- <html lang="en" dir="ltr"> -->
+<!--   <head> -->
+<!--     <meta charset="utf-8"> -->
+<!--     <title>login</title> -->
+<!--   </head> -->
+<!--   <body> -->
+<!--     {{get_flashed_messages()[0]}} -->
+<!--     <form class="login" action="/auth" method="get"> -->
+<!--       <input type="text" name="username" value="" placeholder="username"> -->
+<!--       <input type="text" name="password" value="" placeholder="password"> -->
+<!--       <input type="submit" name="submit" value="login"> -->
+<!--     </form> -->
+<!--   </body> -->
+<!-- </html> -->
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block header %}Login{% endblock %}
+{% block content %}
     {{get_flashed_messages()[0]}}
     <form class="login" action="/auth" method="get">
       <input type="text" name="username" value="" placeholder="username">
       <input type="text" name="password" value="" placeholder="password">
       <input type="submit" name="submit" value="login">
     </form>
-  </body>
-</html>
+{% endblock %}
