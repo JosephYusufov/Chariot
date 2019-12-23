@@ -75,6 +75,18 @@ def login():
     else:
         return render_template("login.html")
 
+    
+@app.route("/register")
+def register():
+    if "username" in session:
+        return redirect("/welcome")
+    else:
+        # if requset.args():
+            # Moody please do dis
+        # else:
+        return render_template("register.html")
+
+
 @app.route("/logout")
 def logout():
     session.pop("username")
