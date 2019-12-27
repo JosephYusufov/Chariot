@@ -1,3 +1,11 @@
+### NEW ENTRIES GO AT THE TOP ###
+
+caoW -- 2019-12-25 16:55
+Created first half of wireframe and did some research on APIs
+
+caoW -- 2019-12-24 18:24
+Made QAF post on JQuery
+
 yusufovJ -- 2019-12-23 01:00
 minimal bootstrap, login and register forms are pretty. Login is fully functional, register needs to be finished. Modeling design after https://zbib.org
 
@@ -8,8 +16,3 @@ Next step: Get bootsrap in here to make this site look swanky.
 moodyR -- 2019-12-21 17:56 
 Boilerplate code, login TBD
 
-caoW -- 2019-12-24 18:24
-Made QAF post on JQuery
-
-caoW -- 2019-12-25 16:55
-Created first half of wireframe and did some research on APIs
