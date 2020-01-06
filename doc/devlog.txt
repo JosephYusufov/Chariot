@@ -1,5 +1,8 @@
 ### NEW ENTRIES GO AT THE TOP ###
 
+caoW -- 2020-01-06 16:00
+Updated database and API usage after today's review
+
 ### Deadlines ###
 - Database Schemas and Helper functions: Saturday, 2020-01-11
 - Front End: Sunday, 2020-01-12
