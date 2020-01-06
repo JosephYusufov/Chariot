@@ -1,5 +1,8 @@
 ### NEW ENTRIES GO AT THE TOP ###
 
+yusufovJ -- 2020-01-06 01:20
+Added flag to doc folder.
+
 yusufovJ -- 2020-01-06 01:00
 Added component map to design.pdf.
 
