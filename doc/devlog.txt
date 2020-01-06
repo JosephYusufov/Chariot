@@ -1,5 +1,14 @@
 ### NEW ENTRIES GO AT THE TOP ###
 
+### Deadlines ###
+- Database Schemas and Helper functions: Saturday, 2020-01-11
+- Front End: Sunday, 2020-01-12
+- API Implementation: Sunday, 2020-01-12
+- Route planner given locations: Sunday, 2020-01-12
+- Itinerary given an order of activities: Sunday, 2020-01-12 
+- Itinerary Generator given tags, time available: Saturday, 2020-01-18
+
+
 yusufovJ -- 2020-01-06 01:20
 Added flag to doc folder.
 
