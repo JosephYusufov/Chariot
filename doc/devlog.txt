@@ -1,5 +1,8 @@
 ### NEW ENTRIES GO AT THE TOP ###
 
+caoW -- 2020-1-6 0:24
+Added database design to design doc
+
 caoW -- 2019-12-25 16:55
 Created first half of wireframe and did some research on APIs
 
