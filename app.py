@@ -121,6 +121,6 @@ def welcome():
 
 if __name__ == "__main__":
     db = SQLHandler("data.db")
-    db.run("CREATE TABLE IF NOT EXISTS loginfo (username TEXT, password TEXT);")
+    db.run("CREATE TABLE IF NOT EXISTS loginfo (username TEXT, password TEXT);")
     app.debug = True
     app.run()

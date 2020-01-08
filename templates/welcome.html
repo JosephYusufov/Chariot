@@ -13,9 +13,51 @@
 <!--   </body> -->
 <!-- </html> -->
 {% extends "base.html" %}
-{% block title %}Welcome{% endblock %}
-{% block header  %}Welcome{% endblock %}
+{% block title %}Dashboard{% endblock %}
+{% block header  %}Dashboard{% endblock %}
 {% block content %}
-    {{get_flashed_messages()[0]}}
+{{get_flashed_messages()[0]}}
 
+<img alt="map" src="./static/img/sample-map.png"/ class="img-fluid">
+<h3>Go to Itinerary Generator</h3>
+<a href="/create-itinerary" class="btn btn-outline-dark">Create Itinerary</a>
+
+
+
+<button id = "find-me">Show my location</button><br/>
+<p id = "status"></p>
+<a id = "map-link" target="_blank"></a>
+
+<script>
+  function geoFindMe() {
+      
+      const status = document.getElementById('#status');
+      const mapLink = document.getElementById('#map-link');
+      
+      mapLink.href = '';
+      mapLink.textContent = '';
+      
+      function success(position) {
+	  const latitude  = position.coords.latitude;
+	  const longitude = position.coords.longitude;
+	  
+	  status.textContent = '';
+	  mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
+	  mapLink.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`;
+      }
+      
+      function error() {
+	  status.textContent = 'Unable to retrieve your location';
+      }
+      
+      if (!navigator.geolocation) {
+	  status.textContent = 'Geolocation is not supported by your browser';
+      } else {
+	  status.textContent = 'Locating…';
+	  navigator.geolocation.getCurrentPosition(success, error);
+      }      
+  }
+  
+  document.getElementById.('#find-me').addEventListener('click', geoFindMe);
+</script>
 {% endblock %}
