@@ -3,7 +3,7 @@
 {% block header %}Register{% endblock %}
 {% block content %}
 
-<form class="border rounded px-3 py-3" action="/register" method="get">
+<form class="border rounded px-3 py-3" action="/register" method="GET">
   <div class="form-group">
     <label for="email">Email address</label>
     <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
@@ -12,19 +12,19 @@
 
   <div class="form-group">
     <label for="username">Username</label>
-    <input type="text" class="form-control" id="username" placeholder="e.x. &quot CamelCase1987&quot">
+    <input type="text" class="form-control" name="username" placeholder="e.x. &quot CamelCase1987&quot">
   </div>
-  
+
   <div class="form-group">
     <label for="password">Password</label>
-    <input type="password" class="form-control" id="password" placeholder="Password">
+    <input type="password" class="form-control" name="password" placeholder="Password">
   </div>
-    
+
   <div class="form-group">
     <label for="confirm">Confirm Password</label>
-    <input type="password" class="form-control" id="confirm" placeholder="Password again">
+    <input type="password" class="form-control" name="confirm" placeholder="Password again">
   </div>
-  
-  <button type="submit" class="btn btn-outline-dark">Register</button>
+
+  <button type="submit" class="bregister?username=moody&password=doofy&button=tn btn-outline-dark">Register</button>
 </form>
 {% endblock %}
