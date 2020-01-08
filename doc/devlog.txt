@@ -1,5 +1,8 @@
 ### NEW ENTRIES GO AT THE TOP ###
 
+yusufovJ -- 2020-01-08 09:20
+Must use Leaflet.JS in conjunction with the MapQuest API. Update to design doc and QAF post imminent. 
+
 caoW -- 2020-01-07 23:58
 Updated sitemap to reflect what was discussed in class
 
