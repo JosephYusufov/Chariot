@@ -1,5 +1,8 @@
 ### NEW ENTRIES GO AT THE TOP ###
 
+yusufovJ -- 2020-01-08 10:30
+MapQuest is working! we have a map on the dashboard.
+
 yusufovJ -- 2020-01-08 09:20
 Must use Leaflet.JS in conjunction with the MapQuest API. Update to design doc and QAF post imminent. 
 
