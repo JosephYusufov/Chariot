@@ -47,3 +47,5 @@ Next step: Get bootsrap in here to make this site look swanky.
 moodyR -- 2019-12-21 17:56 
 Boilerplate code, login TBD
 
+sontagC -- 2020-01-08 8:59
+Added view.html to view individual plans. Began making mapquest helper functions
