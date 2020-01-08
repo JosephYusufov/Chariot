@@ -107,7 +107,6 @@ venv.bak/
 idea
 
 # Database
-*.db
 *.sqlite
 *.sqlite3
 
