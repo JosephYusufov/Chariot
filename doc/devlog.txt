@@ -1,5 +1,8 @@
 ### NEW ENTRIES GO AT THE TOP ###
 
+caoW -- 2020-01-07 23:58
+Updated sitemap to reflect what was discussed in class
+
 yusufovJ -- 2020-01-07 22:40
 Read up on native HTML geolocation and MapQuest API. added in simple geolocation code in dashboard page.
 
