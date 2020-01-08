@@ -95,7 +95,7 @@ def register():
         else:
             insert_username = "INSERT INTO loginfo VALUES ('{}', '{}')".format(
                 username, password)
-            db.run(insert_username)html 
+            db.run(insert_username)
             flash("Successful registration")
             return redirect("/login")
     if "username" in session:
