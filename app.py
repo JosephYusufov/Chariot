@@ -66,7 +66,7 @@ def auth():
 def index():
     if "username" in session:
         return redirect("/welcome")
-    # return redirect("/login")   
+    # return redirect("/login")
     return render_template("index.html")
 
 @app.route("/login")
@@ -76,15 +76,31 @@ def login():
     else:
         return render_template("login.html")
 
-    
+
 @app.route("/register")
 def register():
+    if len(request.args) > 0:
+        username = request.args["username"]
+        password = request.args["password"]
+        confirm = request.args["confirm"]
+        existence_command = "SELECT * FROM loginfo WHERE username LIKE '{}'".format(
+            username)
+        names = db.run(existence_command)
+        if len(names) != 0:
+            flash("Username already taken")
+            return redirect("/register")
+        if password != confirm:
+            flash("Password and confirmation don't match")
+            return redirect("/register")
+        else:
+            insert_username = "INSERT INTO loginfo VALUES ('{}', '{}')".format(
+                username, password)
+            db.run(insert_username)html 
+            flash("Successful registration")
+            return redirect("/login")
     if "username" in session:
         return redirect("/welcome")
     else:
-        # if requset.args():
-            # Moody please do dis
-        # else:
         return render_template("register.html")
 
 
