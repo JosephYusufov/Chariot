@@ -1,5 +1,8 @@
 ### NEW ENTRIES GO AT THE TOP ###
 
+yusufovJ -- 2020-01-09 09:50
+Created comprehensive README.md, subject to drastic change in the future.
+
 caoW -- 20202-01-09 9:17
 Can set date, name, and list of events the user wants to do and sends it to the server.
 
