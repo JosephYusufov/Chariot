@@ -2,10 +2,10 @@ const orderOfEvents = [];
 
 $("#create").on("click", (e) => {
     const itineraryName = $("#itineraryName").html();
-    if(itineraryName.trim().length === 0){
-        $(".container").prepend($(""));
-        showError("Please enter a name for the itinerary");
-    }
+    // if(itineraryName.trim().length === 0){
+    //     $(".container").prepend($(""));
+    //     showError("Please enter a name for the itinerary");
+    // }
 
    $.post("/create-itinerary-create", {
         name: itineraryName,
