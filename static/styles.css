@@ -1,0 +1,18 @@
+:root {
+    --main-purple: #8C52FF;
+}
+
+.btn-outline-dark {
+    color: var(--main-purple);
+    border-color: var(--main-purple);
+}
+
+.btn-outline-dark:hover {
+    background-color: var(--main-purple);
+    border-color: var(--main-purple);    
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(140, 82, 255, 0.25);
+    border-color: var(--main-purple);    
+}
