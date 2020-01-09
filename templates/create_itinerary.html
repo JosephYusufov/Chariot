@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Chariot{% endblock %}
+{% block header %}Chariot{% endblock %}
+{% block content %}
+<!-- https://developer.mapquest.com/documentation/searchahead-api/ -->
+<div class="container">
+  <div id="errorContainer" class="row">
+  </div>
+  <div class="row">
+    <input type="text" id="itineraryName" placeholder="Itinerary name"/>
+    <input type="date" id="itineraryDate" placeholder="Date"/>
+    <input type="button" id="create" value="Create"/>
+    <input type="button" id="cancel" value="Cancel"/>
+  </div>
+  <div class="row">
+    <div class="col-sm text-center">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown button
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" id="asd">Food</a>
+          <a class="dropdown-item">Zoo</a>
+          <a class="dropdown-item">Park</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm text-center">
+      One of three columns
+    </div>
+    <div class="col-sm text-center">
+      One of three columns
+    </div>
+  </div>
+</div>
+{% endblock %}
