@@ -118,6 +118,10 @@ def welcome():
         return render_template('welcome.html', username = session["username"])
     return redirect("/")
 
+@app.route("/create-itinerary")
+def create_itinerary():
+    return render_template('create_itinerary.html', username = session["username"])
+
 
 if __name__ == "__main__":
     db = SQLHandler("data.db")

@@ -14,60 +14,86 @@
 <!-- </html> -->
 {% extends "base.html" %}
 {% block title %}Dashboard{% endblock %}
+{% block head %}
+<script type="text/javascript">
+
+  
+  window.onload = function() {
+      var x = document.getElementById("demo");
+      
+      function getLocation() {
+          if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(showPosition);
+          } else { 
+              x.innerHTML = "Geolocation is not supported by this browser.";
+          }
+      }
+      
+      function showPosition(position) {
+          x.innerHTML = "Latitude: " + position.coords.latitude + 
+              "<br>Longitude: " + position.coords.longitude;
+      }
+      
+      L.mapquest.key = 'yNjXSwjvcoWeXAoUiJw9AZG6MiUvjX8f';
+      
+      var map = L.mapquest.map('map', {
+          center: [37.7749, -122.4194],
+          layers: L.mapquest.tileLayer('map'),
+          zoom: 12
+      });
+
+      map.addControl(L.mapquest.control());
+  }
+</script>
+{% endblock %}
 {% block header  %}Dashboard{% endblock %}
 {% block content %}
 {{get_flashed_messages()[0]}}
 
 <!-- <img alt="map" src="./static/img/sample-map.png"/ class="img-fluid"> -->
-<div id="map"></div>
-<script>
-  L.mapquest.key = 'yNjXSwjvcoWeXAoUiJw9AZG6MiUvjX8f';
-
-    L.mapquest.map('map', {
-    center: [37.7749, -122.4194],
-    layers: L.mapquest.tileLayer('map'),
-    zoom: 12
-    });
-</script>
+<div id="map" style="height: 50vh; width: 100%;"></div>
 <h3>Go to Itinerary Generator</h3>
 <a href="/create-itinerary" class="btn btn-outline-dark">Create Itinerary</a>
 
+<p id="demo"></p>
 
 
-<button id = "find-me">Show my location</button><br/>
-<p id="status"></p>
-<a id="map-link" target="_blank"></a>
 
-<script>
-  function geoFindMe() {
+
+<!-- <button id = "find-me">Show my location</button><br/> -->
+<!-- <p id="status"></p> -->
+<!-- <a id="map-link" target="_blank"></a> -->
+
+<!-- <script> -->
+<!--   function geoFindMe() { -->
       
-      const status = document.querySelector('#status');
-      const mapLink = document.querySelector('#map-link');
+<!--       const status = document.querySelector('#status'); -->
+<!--       const mapLink = document.querySelector('#map-link'); -->
       
-      mapLink.href = '';
-      mapLink.textContent = '';
+<!--       mapLink.href = ''; -->
+<!--       mapLink.textContent = ''; -->
       
-      function success(position) {
-	  const latitude  = position.coords.latitude;
-	  const longitude = position.coords.longitude;
+<!--       function success(position) { -->
+<!-- 	  const latitude  = position.coords.latitude; -->
+<!-- 	  const longitude = position.coords.longitude; -->
 	  
-	  status.textContent = '';
-	  mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
-	  mapLink.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`;
-      }
+<!-- 	  status.textContent = ''; -->
+<!-- 	  mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`; -->
+<!-- 	  mapLink.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`; -->
+<!--       } -->
       
-      function error() {
-	  status.textContent = 'Unable to retrieve your location';
-      }
+<!--       function error() { -->
+<!-- 	  status.textContent = 'Unable to retrieve your location'; -->
+<!--       } -->
       
-      if (!navigator.geolocation) {
-	  status.textContent = 'Geolocation is not supported by your browser';
-      } else {
-	  status.textContent = 'Locating…';
-	  navigator.geolocation.getCurrentPosition(success, error);
-      }      
-  }
+<!--       if (!navigator.geolocation) { -->
+<!-- 	  status.textContent = 'Geolocation is not supported by your browser'; -->
+<!--       } else { -->
+<!-- 	  status.textContent = 'Locating…'; -->
+<!-- 	  navigator.geolocation.getCurrentPosition(success, error); -->
+<!--       } -->
+<!--   } -->
   
-  document.querySelector.('#find-me').addEventListener('click', geoFindMe);
-</script>
+<!--   document.querySelector.('#find-me').addEventListener('click', geoFindMe); -->
+<!-- </script> -->
 {% endblock %}
