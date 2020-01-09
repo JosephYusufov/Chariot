@@ -1,5 +1,8 @@
 ### NEW ENTRIES GO AT THE TOP ###
 
+caoW -- 20202-01-09 9:17
+Can set date, name, and list of events the user wants to do and sends it to the server.
+
 yusufovJ -- 2020-01-08 10:30
 MapQuest is working! we have a map on the dashboard.
 
