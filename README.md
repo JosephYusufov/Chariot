@@ -6,7 +6,9 @@
 
 ---
 ### Description
-Generate a detailed itinerary given the user’s location, preference, and amount of time available. This itinerary will lead the user on a path to see relevant events, landmarks, and other establishments of interest within the given parameters. 
+Chariot is an interactive itinerary generator that leverages the power of existing mapping utilities to generate an itinerary for its user, facilitating an efficient, convenient, and almost entirely hands-off approach to its users.   
+    
+Chariot allows its user to generate a detailed itinerary given the user’s location, preference, and amount of time available. This itinerary will lead the user on a path to see relevant events, landmarks, and other establishments of interest within the given parameters. 
 
 ### Usage: 
 **NOTE:** Python3 is required to use Chariot.
@@ -21,3 +23,7 @@ Generate a detailed itinerary given the user’s location, preference, and amoun
 - Start the Flask app using `$ python3 app.py`
 - Navigate to `127.0.0.1:5000` in a browser's URL window, and use Chariot!
  
+### APIs (Working List)
+[MapQuest Place Search API](https://docs.google.com/document/d/1s0pH9YNA_j9r2tTLWS5gOZhO5M40VFZID99lQ9LsO44/edit)  
+[MapQuest Statuc Maps API](https://docs.google.com/document/d/17K1jnj402jsN6UOQUFZAnnpB--rPzZkNBWme44Biltw/edit)  
+[MapQuest Open Geocoding API](https://docs.google.com/document/d/1HnzToCm_MkkXAyboatQQb0dZiSAYDD04QcwS2UFF4XI/edit)
