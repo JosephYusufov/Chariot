@@ -1,16 +1,55 @@
 const orderOfEvents = [];
 
+const tomorrow = new Date();
+tomorrow.setDate(tomorrow.getDate() + 1);
+document.getElementById("itineraryDate").min = tomorrow.toISOString().split('T')[0];
+
 $("#create").on("click", (e) => {
-    const itineraryName = $("#itineraryName").html();
-    // if(itineraryName.trim().length === 0){
-    //     $(".container").prepend($(""));
-    //     showError("Please enter a name for the itinerary");
-    // }
+    const itineraryName = $("#itineraryName").val();
+    const itineraryDate = $("#itineraryDate").val();
+    const timeStart = $("#timeStart").val();
+    const timeEnd = $("#timeEnd").val();
+    const startPoint = $("#startPoint").val();
+    if(itineraryName.trim().length === 0){
+        console.log(itineraryName);
+        showMessage("Please enter a name for the itinerary", true);
+        return;
+    }
+    if(itineraryDate.length === 0){
+        showMessage("Please enter a date for the itinerary", true);
+        return;
+    }
+    if(timeStart.length === 0){
+        showMessage("Please set start time",true);
+        return;
+    }
+    if(timeEnd.length === 0){
+        showMessage("Please set end time",true);
+        return;
+    }
+    if(startPoint.length === 0){
+        showMessage("Please set start location",true);
+        return;
+    }
 
    $.post("/create-itinerary-create", {
-        name: itineraryName,
-        itineraryDate: $("#itineraryDate").val(),
-        events: orderOfEvents,
+       name: itineraryName,
+       itineraryDate: itineraryDate,
+       events: orderOfEvents,
+       timeStart,
+       timeEnd,
+       startPoint,
+   }, (response) => {
+       if(response.error !== undefined){
+           // there is an error
+           if(response.error === "location"){
+               showMessage("Invalid location", true);
+           }else if(response.error === "time"){
+               showMessage("Make sure end time is after start time", true);
+           }
+       }else{
+           showMessage("Successfully created!", false);
+       }
    });
 });
 
@@ -20,16 +59,16 @@ $(".dropdown-item").on("click", (e) => {
     $(`<div>${eventToAdd}</div>`).insertBefore(".dropdown");
 });
 
-const showError = (errorMessage) => {
+const showMessage = (message, isError) => {
     console.log($("#error"));
-    if($("#error").length !== 0){
+    if($("#message").length !== 0){
         // error message is already showing, so just set text to it
-        $("#error").remove();
+        $("#message").remove();
     }
     $("#errorContainer").prepend($(
         `<div class="row">
-            <div id="error" class="alert alert-danger alert-dismissible fade show" role="alert">
-              ${errorMessage}
+            <div id="message" class="alert alert-${isError ? "danger" : "success"} alert-dismissible fade show" role="alert">
+              ${message}
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
