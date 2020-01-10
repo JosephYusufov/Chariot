@@ -9,13 +9,31 @@
    <body>
    
    <script type="text/javascript">
-      L.mapquest.key = 'KEY';
-      // 'map' refers to a <div> element with the ID map
-      L.mapquest.map('map', {
-         center: [37.7749, -122.4194],
-         layers: L.mapquest.tileLayer('map'),
-         zoom: 12
-      });
+      window.onload = function() {
+         var x = document.getElementById("demo");
+      
+         function getLocation() {
+            if (navigator.geolocation) {
+               navigator.geolocation.getCurrentPosition(showPosition);
+            } else { 
+               x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+         }
+      
+         function showPosition(position) {
+            x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+         }
+      
+         L.mapquest.key = 'yNjXSwjvcoWeXAoUiJw9AZG6MiUvjX8f';
+      
+         var map = L.mapquest.map('map', {
+            center: [37.7749, -122.4194],
+            layers: L.mapquest.tileLayer('map'),
+            zoom: 12
+         });
+
+         map.addControl(L.mapquest.control());
+      }
       
    </script>
    </body>
