@@ -32,7 +32,7 @@ $("#create").on("click", (e) => {
         return;
     }
 
-   $.post("/create-itinerary-create", {
+   $.post("/itinerary/create", {
        name: itineraryName,
        itineraryDate: itineraryDate,
        events: orderOfEvents,

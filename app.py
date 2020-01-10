@@ -33,10 +33,8 @@ class SQLHandler(object):
         self.db.close()  # close database
 
 
-
 app = Flask(__name__)  # create instance of class Flask
 app.secret_key = "dfsgdfg"
-
 
 
 @app.route("/auth")
@@ -61,7 +59,6 @@ def auth():
     return redirect("/login")
 
 
-
 @app.route("/")  # assign following fxn to run when root route requested
 def index():
     if "username" in session:
@@ -69,12 +66,32 @@ def index():
     # return redirect("/login")
     return render_template("index.html")
 
+
 @app.route("/login")
 def login():
     if "username" in session:
         return redirect("/welcome")
     else:
         return render_template("login.html")
+
+
+@app.route("/itinerary", methods=["GET"])
+def itinerary():
+    # get request that responds with a list of all the itinerary that the user has
+    pass
+
+
+@app.route("/itinerary/create", methods=["GET", "POST"])
+def itinerary_create():
+    # get request: shows the creation page
+    # post request createst it
+    return render_template("create_itinerary.html")
+
+
+@app.route("/itinerary/delete", methods=["POST"])
+def itinerary_delete():
+    # delete
+    pass
 
 
 @app.route("/register")
@@ -111,12 +128,12 @@ def logout():
     return redirect("/login")
 
 
-
 @app.route("/welcome")
 def welcome():
     if "username" in session:
         return render_template('welcome.html', username = session["username"])
     return redirect("/")
+
 
 @app.route("/create-itinerary")
 def create_itinerary():
