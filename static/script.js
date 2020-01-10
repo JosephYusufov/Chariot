@@ -9,6 +9,7 @@ $("#create").on("click", (e) => {
     const itineraryDate = $("#itineraryDate").val();
     const timeStart = $("#timeStart").val();
     const timeEnd = $("#timeEnd").val();
+    const startPoint = $("#startPoint").val();
     if(itineraryName.trim().length === 0){
         console.log(itineraryName);
         showMessage("Please enter a name for the itinerary", true);
@@ -22,9 +23,12 @@ $("#create").on("click", (e) => {
         showMessage("Please set start time",true);
         return;
     }
-
     if(timeEnd.length === 0){
         showMessage("Please set end time",true);
+        return;
+    }
+    if(startPoint.length === 0){
+        showMessage("Please set start location",true);
         return;
     }
 
@@ -34,8 +38,19 @@ $("#create").on("click", (e) => {
        events: orderOfEvents,
        timeStart,
        timeEnd,
-
-   }, () => showMessage("Successfully created!"));
+       startPoint,
+   }, (response) => {
+       if(response.error !== undefined){
+           // there is an error
+           if(response.error === "location"){
+               showMessage("Invalid location", true);
+           }else if(response.error === "time"){
+               showMessage("Make sure end time is after start time", true);
+           }
+       }else{
+           showMessage("Successfully created!", false);
+       }
+   });
 });
 
 $(".dropdown-item").on("click", (e) => {
