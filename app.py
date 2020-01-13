@@ -124,7 +124,7 @@ def register():
 @app.route("/logout")
 def logout():
     session.pop("username")
-    flash("just loggged out")
+    flash("Successfully Logged Out")
     return redirect("/login")
 
 
