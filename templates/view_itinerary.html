@@ -4,13 +4,11 @@
 {% block content %}
 <!-- https://developer.mapquest.com/documentation/searchahead-api/ -->
 <div class="container">
-  <div id="errorContainer" class="row">
+
   </div>
   <div class="row">
-    <input type="text" id="itineraryName" placeholder="Itinerary name"/>
-    <input type="date" id="itineraryDate" placeholder="Date"/>
-    <input type="button" id="create" value="Create"/>
-    <input type="button" id="cancel" value="Cancel"/>
+    <input type="text" id="itineraryName" placeholder="Itinerary name" readonly/>
+    <input type="date" id="itineraryDate" placeholder="Date" readonly/>
   </div>
   <div class="row">
     <div class="col-sm text-center">
@@ -43,5 +41,5 @@
     </div>
   </div>
 </div>
-<script src="{{ url_for('static', filename='create_script.js') }}"></script>
+<script src="{{ url_for('static', filename='view_script.js') }}"></script>
 {% endblock %}

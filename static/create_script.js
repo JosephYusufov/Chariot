@@ -48,7 +48,11 @@ $("#create").on("click", (e) => {
                showMessage("Make sure end time is after start time", true);
            }
        }else{
-           showMessage("Successfully created!", false);
+           showMessage("Successfully created! Redirecting...", false);
+           setTimeout(() => {
+               window.location.replace("/welcome");
+           }, 3000); // 3 seconds
+
        }
    });
 });
@@ -66,13 +70,12 @@ const showMessage = (message, isError) => {
         $("#message").remove();
     }
     $("#errorContainer").prepend($(
-        `<div class="row">
-            <div id="message" class="alert alert-${isError ? "danger" : "success"} alert-dismissible fade show" role="alert">
+        `
+            <div id="message" class="alert alert-${isError ? "danger" : "success"} alert-dismissible fade show w-100" role="alert">
               ${message}
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
-            </div>
-          </div>`
+            </div>`
     ));
 };
