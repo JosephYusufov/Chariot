@@ -91,14 +91,14 @@ def itinerary_create():
         command = command.format(session["username"])
         print(command)
         insert_command = "INSERT INTO {user} VALUES ('{name}', '{json}')"
-        dumped_json = (json.dumps(request.form)).replace("\"", "'")
+        dumped_json = (json.dumps(request.form))
         print("JSON START")
         print(dumped_json)
         print("JSON END")
-        insert_command = insert_command.format(user = session["username"], name = "beta", json = dumped_json)
+        insert_command = insert_command.format(user = session["username"], name = request.form["name"], json = dumped_json)
         print(insert_command)
-        # db.run(command)
-        # db.run(insert_command)
+        db.run(command)
+        db.run(insert_command)
     return render_template("create_itinerary.html")
 
 
