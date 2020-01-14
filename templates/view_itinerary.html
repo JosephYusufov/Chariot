@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Chariot{% endblock %}
+{% block header %}Chariot{% endblock %}
+{% block content %}
+<!-- https://developer.mapquest.com/documentation/searchahead-api/ -->
+<div class="container">
+
+  </div>
+  <div class="row">
+    <input type="text" id="itineraryName" placeholder="Itinerary name" readonly/>
+    <input type="date" id="itineraryDate" placeholder="Date" readonly/>
+  </div>
+  <div class="row">
+    <div class="col-sm text-center">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown button
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" id="asd">Food</a>
+          <a class="dropdown-item">Zoo</a>
+          <a class="dropdown-item">Park</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm text-center">
+      <div class="form-group">
+        <label for="timeStart">Time Start</label>
+        <input type="time" id="timeStart"/>
+      </div>
+      <div class="form-group">
+        <label for="timeEnd">Time end</label>
+        <input type="time" id="timeEnd"/>
+      </div>
+    </div>
+    <div class="col-sm text-center">
+      <div class="form-group">
+        <label for="startPoint">Start point:</label>
+        <input type="text" id="startPoint"/>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{{ url_for('static', filename='view_script.js') }}"></script>
+{% endblock %}

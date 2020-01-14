@@ -5,7 +5,7 @@ $.get("/itinerary/list", (response) => {
         const date = itinerary.date;
 
         $("#itinerary-container").append($(`
-          <a href="/itinerary/view" class="list-group-item list-group-item-action">${name} -- ${date}</a>
+          <a href="/itinerary/${id}" class="list-group-item list-group-item-action">${name} -- ${date}</a>
         `))
     }
 });
