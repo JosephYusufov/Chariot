@@ -78,6 +78,10 @@ def login():
 @app.route("/itinerary", methods=["GET"])
 def itinerary():
     # get request that responds with a list of all the itinerary that the user has
+    command = "SELECT * FROM {}".format(session["username"])
+    useritens = db.run(command)
+    print(useritens)
+    return "here be all itens"
     pass
 
 
@@ -99,6 +103,7 @@ def itinerary_create():
         print(insert_command)
         db.run(command)
         db.run(insert_command)
+        return redirect("/itinerary")
     return render_template("create_itinerary.html")
 
 
