@@ -48,7 +48,17 @@
 {% endblock %}
 {% block header  %}Dashboard{% endblock %}
 {% block content %}
-{{get_flashed_messages()[0]}}
+
+{% if (get_flashed_messages()[0]) %}
+<div class="row">
+  <div id="message" class="alert alert-success alert-dismissible fade show" role="alert">
+    {{get_flashed_messages()[0]}}   
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</div>
+{% endif %}
 
 <!-- <img alt="map" src="./static/img/sample-map.png"/ class="img-fluid"> -->
 <div id="map" style="height: 50vh; width: 100%;"></div>
