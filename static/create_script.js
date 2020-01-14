@@ -48,7 +48,11 @@ $("#create").on("click", (e) => {
                showMessage("Make sure end time is after start time", true);
            }
        }else{
-           showMessage("Successfully created!", false);
+           showMessage("Successfully created! Redirecting...", false);
+           setTimeout(() => {
+               window.location.replace("/welcome");
+           }, 3000); // 3 seconds
+
        }
    });
 });
