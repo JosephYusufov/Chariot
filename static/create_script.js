@@ -66,13 +66,12 @@ const showMessage = (message, isError) => {
         $("#message").remove();
     }
     $("#errorContainer").prepend($(
-        `<div class="row">
-            <div id="message" class="alert alert-${isError ? "danger" : "success"} alert-dismissible fade show" role="alert">
+        `
+            <div id="message" class="alert alert-${isError ? "danger" : "success"} alert-dismissible fade show w-100" role="alert">
               ${message}
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
-            </div>
-          </div>`
+            </div>`
     ));
 };
