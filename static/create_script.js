@@ -35,7 +35,7 @@ $("#create").on("click", (e) => {
    $.post("/itinerary/create", {
        name: itineraryName,
        itineraryDate: itineraryDate,
-       events: orderOfEvents,
+       events: orderOfEvents.join(","),
        timeStart,
        timeEnd,
        startPoint,
