@@ -214,6 +214,5 @@ def create_itinerary():
 if __name__ == "__main__":
     db = SQLHandler("data.db")
     db.run("CREATE TABLE IF NOT EXISTS loginfo (username TEXT, password TEXT);")
-    db.run("DELETE FROM mood WHERE iten_id like 44")
     app.debug = True
     app.run()
