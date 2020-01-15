@@ -1,4 +1,7 @@
 ### NEW ENTRIES GO AT THE TOP ###
+yusufovJ -- 2020-01-15 03:50
+Did itinerary generation. Monster commit.
+
 caoW -- 2020-01-13 23:52
 Added boilerplate code for displaying a list of what itineraries the user crated and the ability to view the details of
 every itinerary event, name, date, and time.

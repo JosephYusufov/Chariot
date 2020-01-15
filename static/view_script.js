@@ -1,5 +1,5 @@
-let id = document.location.href.split("/");
-id = api_url[api_url.length - 1];
+let url_vector = document.location.href.split("/");
+let id = url_vector[url_vector.length - 1];
 let api_url = "/itinerary/details/" + id;
 
 $("#delete").on("click", ()=>{
