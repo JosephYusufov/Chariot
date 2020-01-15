@@ -36,12 +36,42 @@ $.get(api_url, (response) => {
         $("#events").append($(html));
         i++;
     }
-
-    // where the user starts the itinerary
-    const startLocation = response.startPoint;
-
-
-    // -- start here
-
-    // -- end her
 });
+    // -- start here
+  window.onload = function() {
+      var x = document.getElementById("demo");
+      
+      function getLocation() {
+          if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(showPosition);
+          } else { 
+              x.innerHTML = "Geolocation is not supported by this browser.";
+          }
+      }
+      
+      function showPosition(position) {
+          x.innerHTML = "Latitude: " + position.coords.latitude + 
+              "<br>Longitude: " + position.coords.longitude;
+      }
+      
+      L.mapquest.key = 'yNjXSwjvcoWeXAoUiJw9AZG6MiUvjX8f';
+      
+      var map = L.mapquest.map('map', {
+          center: [37.7749, -122.4194],
+          layers: L.mapquest.tileLayer('map'),
+          zoom: 12
+      });
+
+      map.addControl(L.mapquest.control());
+      
+      const start = response.StartPoint;
+      
+      for(const event of destinations){
+        L.mapquest.directions().route({
+          start: start,
+          end: event
+        });
+        start = event;
+      }
+  }
+    // -- end her
