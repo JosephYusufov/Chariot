@@ -8,8 +8,29 @@ $.get(api_url, (response) => {
 
     $("#itineraryName").html(response.name);
     $("#itineraryDate").html(response.date);
+    //
+    // response.events = [
+    //     {
+    //         name: "name",
+    //         location: "location",
+    //         time_start: "time_start",
+    //         time_end: "time_end",
+    //     }
+    // ];
 
     for(const event of response.events){
-        console.log(event);
+        const html = `
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">1. ${event.name}</h5>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Address: ${event.address}</li>
+              <li class="list-group-item">Start: ${event.time_start}</li>
+              <li class="list-group-item">End: ${event.time_end}</li>
+            </ul>
+          </div>
+        </div>
+        `
+        $("#events").append($(html));
     }
 });

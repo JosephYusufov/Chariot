@@ -10,35 +10,19 @@
     <h1 id="itineraryName"></h1>
     <h3 id="itineraryDate"></h3>
   </div>
-  <div class="row">
-    <div class="col-sm text-center">
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown button
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" id="asd">Food</a>
-          <a class="dropdown-item">Zoo</a>
-          <a class="dropdown-item">Park</a>
-        </div>
-      </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Start</h5>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" id="startLocation">Start Location: location</li>
+        <li class="list-group-item" id="startTime">Start time: location</li>
+      </ul>
     </div>
-    <div class="col-sm text-center">
-      <div class="form-group">
-        <label for="timeStart">Time Start</label>
-        <input type="time" id="timeStart"/>
-      </div>
-      <div class="form-group">
-        <label for="timeEnd">Time end</label>
-        <input type="time" id="timeEnd"/>
-      </div>
-    </div>
-    <div class="col-sm text-center">
-      <div class="form-group">
-        <label for="startPoint">Start point:</label>
-        <input type="text" id="startPoint"/>
-      </div>
-    </div>
+  </div>
+
+  <div id="events">
+
   </div>
 </div>
 <script src="{{ url_for('static', filename='view_script.js') }}"></script>
