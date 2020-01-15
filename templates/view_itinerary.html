@@ -1,6 +1,5 @@
 {% extends "base.html" %}
-{% block title %}<span class="itineraryName"></span>{% endblock %}
-{% block header %}<span class="itineraryName"></span>{% endblock %}
+{% block header %}<span id="itineraryName"></span>{% endblock %}
 {% block content %}
 <!-- https://developer.mapquest.com/documentation/searchahead-api/ -->
 <div class="container">
@@ -9,9 +8,9 @@
   <div class="col-sm text-center">
     <h3 id="itineraryDate"></h3>
   </div>
-  <div id="errorContent">
 
-  </div>
+  <div id="errorContent"/>
+
   <button id="delete" class="btn-danger btn">Delete</button>
    <div class="card">
      <div class="card-body">
