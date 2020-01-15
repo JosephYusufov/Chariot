@@ -77,14 +77,14 @@ $.get(api_url, (response) => {
 
       map.addControl(L.mapquest.control());
       /*
-      const start = response.StartPoint;
+      const startP = response.StartPoint;
       
-      for(const event of destinations){
+      for(const eventP of destinations){
         L.mapquest.directions().route({
-          start: start,
-          end: event
+          start: startP,
+          end: eventP
         });
-        start = event;
+        startP = eventP;
       }*/
   }
     // -- end her
