@@ -16,8 +16,11 @@ $.get(api_url, (response) => {
 
     $("#itineraryName").html(response.name);
     $("#itineraryDate").html(response.date);
+    // gives a list of string of addresses in order of event
+    const destinations = [];
     let i = 1;
     for(const event of response.events){
+        destinations.push(event.address);
         const html = `
         <div class="card">
           <div class="card-body">
@@ -33,4 +36,12 @@ $.get(api_url, (response) => {
         $("#events").append($(html));
         i++;
     }
+
+    // where the user starts the itinerary
+    const startLocation = response.startPoint;
+
+
+    // -- start here
+
+    // -- end her
 });
