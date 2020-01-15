@@ -1,3 +1,4 @@
+// Create Itinerary using this script
 const orderOfEvents = [];
 
 const tomorrow = new Date();
@@ -40,6 +41,8 @@ $("#create").on("click", (e) => {
        timeEnd,
        startPoint,
    }, (response) => {
+     console.log("asd");
+     console.log(response);
        if(response.error !== undefined){
            // there is an error
            if(response.error === "location"){

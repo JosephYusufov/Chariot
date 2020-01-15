@@ -12,6 +12,7 @@ import random
 import csv
 import sqlite3
 import os
+import random
 
 
 class SQLHandler(object):
@@ -75,17 +76,47 @@ def login():
         return render_template("login.html")
 
 
-@app.route("/itinerary", methods=["GET"])
+@app.route("/itinerary/list", methods=["GET"])
 def itinerary():
     # get request that responds with a list of all the itinerary that the user has
-    pass
+    command = "SELECT * FROM {}".format(session["username"])
+    useritens = db.run(command)
+    # print(useritens)
+    out_dict = {}
+    out_dict["itinerary"] = []
+    for iten in useritens:
+        out_dict["itinerary"].append(5)
+        itendict = json.loads(iten[1])
+        out_dict["itinerary"].append({"name":itendict["name"], "id":random.randint(0,99999999), "date":itendict["itineraryDate"]})
+    print(out_dict)
+    return json.dumps(out_dict)
 
 
 @app.route("/itinerary/create", methods=["GET", "POST"])
 def itinerary_create():
-    # get request: shows the creation page
+    # get request: shows the creation pagepass
     # post request createst it
-    return render_template("create_itinerary.html")
+    if request.method == "POST":
+        # print(request.form)
+        command = "CREATE TABLE IF NOT EXISTS {} (iten_name TEXT, iten_json TEXT);"
+        command = command.format(session["username"])
+        # print(command)
+        insert_command = "INSERT INTO {user} VALUES ('{name}', '{json}')"
+        dumped_json = (json.dumps(request.form))
+        # print("JSON START")
+        # print(dumped_json)
+        # print("JSON END")
+        insert_command = insert_command.format(user = session["username"], name = request.form["name"], json = dumped_json)
+        # print(insert_command)
+        db.run(command)
+        db.run(insert_command)
+        return dumped_json
+        # json dump that object
+
+        # take care of error handling
+
+    else:
+        return render_template("create_itinerary.html")
 
 
 @app.route("/itinerary/delete", methods=["POST"])
