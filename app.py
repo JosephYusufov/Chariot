@@ -97,14 +97,15 @@ def itinerary_create():
     # get request: shows the creation pagepass
     # post request createst it
     if request.method == "POST":
-        # print(request.form)
         command = "CREATE TABLE IF NOT EXISTS {} (iten_id TEXT, iten_json TEXT);"
         command = command.format(session["username"])
-        # print(command)
         insert_command = "INSERT INTO {user} VALUES ('{id}', '{json}')"
         dumped_json = (json.dumps(request.form))
         mutable_json = json.loads(dumped_json)
         mutable_json["id"] = random.randint(0, 9999999)
+
+        # This is where the itinerary creation magic happens. Scroll down to see this function in action.
+        mutable_json["events"] = mapquest_create( mutable_json["events"].split(','), mutable_json["startPoint"] )
         print(mutable_json)
         dumped_json = json.dumps(mutable_json)
         print("JSON START")
@@ -133,35 +134,43 @@ def itinerary_delete(id):
 def itinerary_details(id):
     # just return the template.
     #
-    return render_template("view_itinerary.html")
+    return render_template("view_itinerary.html", username=session["username"])
 
 @app.route("/itinerary/details/<int:id>")
 def itinerary_view(id):
     command = "SELECT iten_json FROM {username}".format(username = session["username"])
     allitens_raw = db.run(command)
+    print("--ALLITENS--")
+    print("{} LONG".format(len(allitens_raw)))
+    print(allitens_raw)
+    print("--ENDITENS--")
     for iten_json in allitens_raw:
-        print(iten_json[0])
+        print(iten_json)
         iten_dict = json.loads(iten_json[0])
-        print(iten_dict)
+        # print("ITEN_DICT"iten_dict)
+        print(json.dumps(iten_dict, indent=4, sort_keys=True))
         if (iten_dict["id"] == id):
 
             out_dict = {}
             out_dict["name"] = iten_dict["name"]
             out_dict["date"] = iten_dict["itineraryDate"]
             out_dict["startPoint"] = iten_dict["startPoint"]
-            out_dict["events"] = []
-            for x in iten_dict["events"].split(","):
-                if x == "Zoo":
-                    out_dict["events"].append({"name":"metrozoo", "address":"345 Chambers St", "time_start":"2020-01-15T02:29:56.647Z", "time_end":"2020-01-15T02:29:56.647Z"})
-                if x == "Food":
-                    out_dict["events"].append({"name":"mamma mia meatballs", "address":"One Infinite Loop, CA", "time_start":"2020-01-15T02:29:56.647Z", "time_end":"2020-01-15T02:29:56.647Z"})
-                if x == Park:
-                    out_dict["events"].append({"name":"heroin park", "address":"69 420ST", "time_start":"2020-01-15T02:29:56.647Z", "time_end":"2020-01-15T02:29:56.647Z"})
-                else:
-                    out_dict["events"].append({"name":"hell", "address":"davey jones locker", "time_start":"2020-01-15T02:29:56.647Z", "time_end":"2020-01-15T02:29:56.647Z"})
+
+            # When mapquest_create() is ready, get rid of this loop
+            out_dict["events"] = iten_dict["events"]
+            # out_dict["events"] = []
+            # for x in iten_dict["events"].split(","):
+            #     if x == "Zoo":
+            #         out_dict["events"].append({"name":"metrozoo", "address":"345 Chambers St", "time_start":"2020-01-15T02:29:56.647Z", "time_end":"2020-01-15T02:29:56.647Z"})
+            #     if x == "Food":
+            #         out_dict["events"].append({"name":"mamma mia meatballs", "address":"One Infinite Loop, CA", "time_start":"2020-01-15T02:29:56.647Z", "time_end":"2020-01-15T02:29:56.647Z"})
+            #     if x == "Park":
+            #         out_dict["events"].append({"name":"heroin park", "address":"69 420ST", "time_start":"2020-01-15T02:29:56.647Z", "time_end":"2020-01-15T02:29:56.647Z"})
+            #     else:
+            #         out_dict["events"].append({"name":"hell", "address":"davey jones locker", "time_start":"2020-01-15T02:29:56.647Z", "time_end":"2020-01-15T02:29:56.647Z"})
             return json.dumps(out_dict)
-        else:
-            return json.dumps({"error":"user not found"})
+        # else:
+            # return json.dumps({"error":"user not found"})
     return json.dumps({"error":"database not initialized, invalid program state"})
 
 
@@ -209,6 +218,56 @@ def welcome():
 @app.route("/create-itinerary")
 def create_itinerary():
     return render_template('create_itinerary.html', username = session["username"])
+
+def mapquest_create(events_list, starting_point):
+    origin = starting_point.replace(" ", "+")
+    print(origin)
+    events_toreturn = []
+    for x in events_list:
+        if x == "Park":
+            e = urllib.request.urlopen("https://www.mapquestapi.com/search/v2/radius?origin={}&radius=5&maxMatches=3&ambiguities=ignore&hostedData=mqap.ntpois|group_sic_code=?|799951&outFormat=json&key=yNjXSwjvcoWeXAoUiJw9AZG6MiUvjX8f".format(origin))
+            e = json.loads( e.read() )
+            mapquest_event = random.choice( e["searchResults"] )
+            print("--- PARK ---")
+            print(mapquest_event)
+            print("--- ENDPARK---")
+            event = {}
+            event["name"] = mapquest_event["name"]
+            event["address"] = "{}, {}, {}, {}, {}".format( mapquest_event["name"], mapquest_event["fields"]["address"], mapquest_event["fields"]["city"], mapquest_event["fields"]["state"], mapquest_event["fields"]["postal_code"])
+            event["time_start"] = "2020-01-15T02:29:56.647Z"
+            event["time_end"] = "2020-01-15T02:29:56.647Z"
+            events_toreturn.append( event )
+        elif x == "Zoo":
+            e = urllib.request.urlopen("https://www.mapquestapi.com/search/v2/radius?origin={}&radius=5&maxMatches=3&ambiguities=ignore&hostedData=mqap.ntpois|group_sic_code=?|842201&outFormat=json&key=yNjXSwjvcoWeXAoUiJw9AZG6MiUvjX8f".format(origin))
+            e = json.loads( e.read() )
+            mapquest_event = random.choice( e["searchResults"] )
+            print("--- ZOO ---")
+            print(mapquest_event)
+            print("--- ENDZOO---")
+            event = {}
+            event["name"] = mapquest_event["name"]
+            event["address"] = "{}, {}, {}, {}, {}".format( mapquest_event["name"], mapquest_event["fields"]["address"], mapquest_event["fields"]["city"], mapquest_event["fields"]["state"], mapquest_event["fields"]["postal_code"])
+            event["time_start"] = "2020-01-15T02:29:56.647Z"
+            event["time_end"] = "2020-01-15T02:29:56.647Z"
+            events_toreturn.append( event )
+        elif x == "Food":
+            e = urllib.request.urlopen("https://www.mapquestapi.com/search/v2/radius?origin={}&radius=5&maxMatches=3&ambiguities=ignore&hostedData=mqap.ntpois|group_sic_code=?|581208&outFormat=json&key=yNjXSwjvcoWeXAoUiJw9AZG6MiUvjX8f".format(origin))
+            e = json.loads( e.read() )
+            mapquest_event = random.choice( e["searchResults"] )
+            print("--- FOOD ---")
+            print(mapquest_event)
+            print("--- ENDFOOD---")
+
+            event = {}
+            event["name"] = mapquest_event["name"]
+            event["address"] = "{}, {}, {}, {}, {}".format( mapquest_event["name"], mapquest_event["fields"]["address"], mapquest_event["fields"]["city"], mapquest_event["fields"]["state"], mapquest_event["fields"]["postal_code"])
+            event["time_start"] = "2020-01-15T02:29:56.647Z"
+            event["time_end"] = "2020-01-15T02:29:56.647Z"
+            events_toreturn.append( event )
+        else:
+            print("oops")
+    return events_toreturn
+
 
 
 if __name__ == "__main__":

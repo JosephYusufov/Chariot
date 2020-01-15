@@ -1,26 +1,25 @@
 {% extends "base.html" %}
-{% block title %}Chariot{% endblock %}
-{% block header %}Chariot{% endblock %}
+{% block title %}<span class="itineraryName"></span>{% endblock %}
+{% block header %}<span class="itineraryName"></span>{% endblock %}
 {% block content %}
 <!-- https://developer.mapquest.com/documentation/searchahead-api/ -->
 <div class="container">
 
   </div>
   <div class="col-sm text-center">
-    <h1 id="itineraryName"></h1>
     <h3 id="itineraryDate"></h3>
   </div>
   <button id="delete">Delete</button>
 
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Start</h5>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item" id="startLocation">Start Location: location</li>
-        <li class="list-group-item" id="startTime">Start time: location</li>
-      </ul>
-    </div>
-  </div>
+  <!-- <div class="card"> -->
+  <!--   <div class="card-body"> -->
+  <!--     <h5 class="card-title">Start</h5> -->
+  <!--     <ul class="list-group list-group-flush"> -->
+  <!--       <li class="list-group-item" id="startLocation">Start Location: location</li> -->
+  <!--       <li class="list-group-item" id="startTime">Start time: location</li> -->
+  <!--     </ul> -->
+  <!--   </div> -->
+  <!-- </div> -->
 
   <div id="events">
 
