@@ -123,7 +123,7 @@ def itinerary_create():
         return render_template("create_itinerary.html")
 
 
-@app.route("/itinerary/delete/<int:id>", methods=["POST"])
+@app.route("/itinerary/delete/<int:id>", methods=["GET"])
 def itinerary_delete(id):
     command = "DELETE FROM {username} WHERE iten_id = {id_to_delete}".format(username=session["username"], id_to_delete=id)
     db.run(command)
