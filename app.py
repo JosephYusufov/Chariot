@@ -86,8 +86,9 @@ def itinerary():
     out_dict["itinerary"] = []
     for iten in useritens:
         itendict = json.loads(iten[1])
-        out_dict["itinerary"].append({"name":itendict["name"], "id":random.randint(0,99999999), "date":itendict["itineraryDate"]})
-    print(out_dict)
+        print(itendict)
+        out_dict["itinerary"].append({"name":itendict["name"], "id":itendict["id"], "date":itendict["itineraryDate"]})
+    # print(out_dict)
     return json.dumps(out_dict)
 
 
@@ -102,9 +103,13 @@ def itinerary_create():
         # print(command)
         insert_command = "INSERT INTO {user} VALUES ('{name}', '{json}')"
         dumped_json = (json.dumps(request.form))
-        # print("JSON START")
-        # print(dumped_json)
-        # print("JSON END")
+        mutable_json = json.loads(dumped_json)
+        mutable_json["id"] = random.randint(0, 9999999)
+        print(mutable_json)
+        dumped_json = json.dumps(mutable_json)
+        print("JSON START")
+        print(dumped_json)
+        print("JSON END")
         insert_command = insert_command.format(user = session["username"], name = request.form["name"], json = dumped_json)
         # print(insert_command)
         db.run(command)
@@ -126,12 +131,29 @@ def itinerary_delete():
 @app.route("/itinerary/<int:id>")
 def itinerary_details(id):
     # just return the template.
+    #
     return render_template("view_itinerary.html")
 
 @app.route("/itinerary/details/<int:id>")
 def itinerary_view(id):
-    command = "SELECT * FROM {} WHERE"
-    pass
+    command = "SELECT iten_json FROM {username}".format(username = session["username"])
+    allitens_raw = db.run(command)
+    for iten_json in allitens_raw:
+        print(iten_json[0])
+        iten_dict = json.loads(iten_json[0])
+        print(iten_dict)
+        if (iten_dict["id"] == id):
+
+            out_dict = {}
+            out_dict["name"] = iten_dict["name"]
+            out_dict["date"] = iten_dict["itineraryDate"]
+            out_dict["startPoint"] = iten_dict["startPoint"]
+            out_dict["events"] = iten_dict["events"].split(",")
+
+            return json.dumps(out_dict)
+        else:
+            return "no match"
+    return "here"
 
 
 @app.route("/register")
