@@ -16,7 +16,7 @@ $.get(api_url, (response) => {
     document.title = response.name;
     console.log(response);
     console.log(response.startPoint);
-    $("#startLocation").html("Start Location: " + response.startPoint);
+    $("#startLocation").html(`Start Location: ${response.startPoint} ${response.startTime}`);
     $("#startTime").html("Start time: " + response.date);
     $("#itineraryName").html(response.name);
     $("#itineraryDate").html(response.date);
