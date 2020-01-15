@@ -98,10 +98,10 @@ def itinerary_create():
     # post request createst it
     if request.method == "POST":
         # print(request.form)
-        command = "CREATE TABLE IF NOT EXISTS {} (iten_name TEXT, iten_json TEXT);"
+        command = "CREATE TABLE IF NOT EXISTS {} (iten_id TEXT, iten_json TEXT);"
         command = command.format(session["username"])
         # print(command)
-        insert_command = "INSERT INTO {user} VALUES ('{name}', '{json}')"
+        insert_command = "INSERT INTO {user} VALUES ('{id}', '{json}')"
         dumped_json = (json.dumps(request.form))
         mutable_json = json.loads(dumped_json)
         mutable_json["id"] = random.randint(0, 9999999)
@@ -110,7 +110,7 @@ def itinerary_create():
         print("JSON START")
         print(dumped_json)
         print("JSON END")
-        insert_command = insert_command.format(user = session["username"], name = request.form["name"], json = dumped_json)
+        insert_command = insert_command.format(user = session["username"], id = mutable_json["id"], json = dumped_json)
         # print(insert_command)
         db.run(command)
         db.run(insert_command)
@@ -123,10 +123,11 @@ def itinerary_create():
         return render_template("create_itinerary.html")
 
 
-@app.route("/itinerary/delete", methods=["POST"])
-def itinerary_delete():
-    # delete
-    pass
+@app.route("/itinerary/delete/<int:id>", methods=["POST"])
+def itinerary_delete(id):
+    command = "DELETE FROM {username} WHERE iten_id = {id_to_delete}".format(username=session["username"], id_to_delete=id)
+    db.run(command)
+    return json.dumps({"status":"successful", "deleted_id":id})
 
 @app.route("/itinerary/<int:id>")
 def itinerary_details(id):
@@ -213,5 +214,6 @@ def create_itinerary():
 if __name__ == "__main__":
     db = SQLHandler("data.db")
     db.run("CREATE TABLE IF NOT EXISTS loginfo (username TEXT, password TEXT);")
+    db.run("DELETE FROM mood WHERE iten_id like 44")
     app.debug = True
     app.run()
