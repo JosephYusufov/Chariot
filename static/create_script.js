@@ -1,3 +1,4 @@
+// Create Itinerary using this script
 const orderOfEvents = [];
 
 const tomorrow = new Date();
