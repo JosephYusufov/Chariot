@@ -4,22 +4,23 @@ let api_url = "/itinerary/details/" + id;
 
 $("#delete").on("click", ()=>{
     $.get("/itinerary/delete/" + id);
-    window.location.replace("/welcome");
+    setTimeout(() => {
+        window.location.replace("/welcome");
+    }, 3000); // 3 seconds
 });
 
-// $("#delete").href = "/itinerary/delete" + id
-
-console.log(id);
-console.log(api_url);
 $.get(api_url, (response) => {
     response = JSON.parse(response);
     // response.name = "hi there";
     // response.date = "2020/01/14";
 
-    $(".itineraryName").html(response.name);
+    $("#itineraryName").html(response.name);
     $("#itineraryDate").html(response.date);
+    // gives a list of string of addresses in order of event
+    const destinations = [];
     let i = 1;
     for(const event of response.events){
+        destinations.push(event.address);
         const html = `
         <div class="card">
           <div class="card-body">
@@ -35,4 +36,12 @@ $.get(api_url, (response) => {
         $("#events").append($(html));
         i++;
     }
+
+    // where the user starts the itinerary
+    const startLocation = response.startPoint;
+
+
+    // -- start here
+
+    // -- end her
 });
