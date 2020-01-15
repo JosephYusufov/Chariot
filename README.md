@@ -10,7 +10,7 @@ Chariot is an interactive itinerary generator that leverages the power of existi
     
 Chariot allows its user to generate a detailed itinerary given the user’s location, preference, and amount of time available. This itinerary will lead the user on a path to see relevant events, landmarks, and other establishments of interest within the given parameters. 
 
-### Usage: 
+### Setup
 **NOTE:** Python3 is required to use Chariot.
 1. Clone Chariot onto your machine from this repository using `$ git clone https://github.com/JosephYusufov/Chariot.git`
 2. Change into the `Chariot` directory  
