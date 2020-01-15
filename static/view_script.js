@@ -4,6 +4,9 @@ let api_url = "/itinerary/details/" + id;
 
 $("#delete").on("click", ()=>{
     $.get("/itinerary/delete/" + id);
+    setTimeout(() => {
+        window.location.replace("/welcome");
+    }, 3000); // 3 seconds
 });
 
 $.get(api_url, (response) => {
