@@ -3,10 +3,19 @@ let id = url_vector[url_vector.length - 1];
 let api_url = "/itinerary/details/" + id;
 
 $("#delete").on("click", ()=>{
-    $.get("/itinerary/delete/" + id);
-    setTimeout(() => {
-        window.location.replace("/welcome");
-    }, 3000); // 3 seconds
+    $.get("/itinerary/delete/" + id, () => {
+        $("#errorContent").append($(`
+            <div id="message" class="alert alert-success alert-dismissible fade show w-100" role="alert">
+              Deleting!
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+        `));
+        setTimeout(() => {
+            window.location.replace("/welcome");
+        }, 3000); // 3 seconds
+    });
 });
 
 $.get(api_url, (response) => {
