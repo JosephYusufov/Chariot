@@ -148,8 +148,9 @@ def itinerary_view(id):
             out_dict["name"] = iten_dict["name"]
             out_dict["date"] = iten_dict["itineraryDate"]
             out_dict["startPoint"] = iten_dict["startPoint"]
-            out_dict["events"] = iten_dict["events"].split(",")
-
+            out_dict["events"] = [{"name":"metrozoo", "address":"345 Chambers St", "time_start":"2020-01-15T02:29:56.647Z", "time_end":"2020-01-15T02:29:56.647Z"}]
+            out_dict["events"].append({"name":"italianboi", "address":"1 Cupertino", "time_start":"2020-01-15T02:29:56.647Z", "time_end":"2020-01-15T02:29:56.647Z"})
+            
             return json.dumps(out_dict)
         else:
             return json.dumps({"error":"user not found"})
