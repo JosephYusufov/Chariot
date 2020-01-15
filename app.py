@@ -152,8 +152,8 @@ def itinerary_view(id):
 
             return json.dumps(out_dict)
         else:
-            return "no match"
-    return "here"
+            return json.dumps({"error":"user not found"})
+    return json.dumps({"error":"database not initialized, invalid program state"})
 
 
 @app.route("/register")
