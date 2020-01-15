@@ -23,7 +23,9 @@ Chariot allows its user to generate a detailed itinerary given the user’s loca
 7. Start the Flask app using `$ python3 app.py`
 8. Navigate to `127.0.0.1:5000` in a browser's URL window, and use Chariot!
  
-### APIs (Working List)
-[MapQuest Place Search API](https://docs.google.com/document/d/1s0pH9YNA_j9r2tTLWS5gOZhO5M40VFZID99lQ9LsO44/edit)  
-[MapQuest Statuc Maps API](https://docs.google.com/document/d/17K1jnj402jsN6UOQUFZAnnpB--rPzZkNBWme44Biltw/edit)  
-[MapQuest Open Geocoding API](https://docs.google.com/document/d/1HnzToCm_MkkXAyboatQQb0dZiSAYDD04QcwS2UFF4XI/edit)
+### APIs Used
+[MapQuest Place Search API](https://docs.google.com/document/d/1s0pH9YNA_j9r2tTLWS5gOZhO5M40VFZID99lQ9LsO44/edit) -- Used for the core itinerary generation function, allowing us to search for specific types of places located around an origin point.   
+
+[MapQuest Static Maps API](https://docs.google.com/document/d/17K1jnj402jsN6UOQUFZAnnpB--rPzZkNBWme44Biltw/edit) -- Display directions, locations of points of interest, find current user location.   
+
+[MapQuest Open Geocoding API](https://docs.google.com/document/d/1HnzToCm_MkkXAyboatQQb0dZiSAYDD04QcwS2UFF4XI/edit) -- Convert street addresses into Geographic Coordinates (e.g. Longitude and Lattitude), and vice versa.
