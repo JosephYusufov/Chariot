@@ -12,17 +12,18 @@
 <h3 id="description">Description</h3>
 <p>Chariot is an interactive itinerary generator that leverages the power of existing mapping utilities to generate an itinerary for its user, facilitating an efficient, convenient, and almost entirely hands-off approach to its users.   </p>
 <p>Chariot allows its user to generate a detailed itinerary given the user’s location, preference, and amount of time available. This itinerary will lead the user on a path to see relevant events, landmarks, and other establishments of interest within the given parameters. </p>
-<h3 id="usage">Usage:</h3>
+<h3 id="setup">Setup</h3>
 <p><strong>NOTE:</strong> Python3 is required to use Chariot.</p>
 <ol>
 <li>Clone Chariot onto your machine from this repository using <code>$ git clone https://github.com/JosephYusufov/Chariot.git</code></li>
 <li>Change into the <code>Chariot</code> directory  </li>
+<li>Procure MapQuest API key <a href="https://developer.mapquest.com/">here</a>, and paste the key into <code>keys/mapquest.txt</code></li>
 <li>Create a virtual environment using <code>$ python3 -m venv Chariot</code></li>
 <li>Activate the virtual environment:<ul>
 <li>If using <strong>bash</strong>, run <code>$ . Chariot/bin/activate</code>.</li>
 <li>If using <strong>zsh</strong>, run <code>$ source Chariot/bin/activate</code>.</li></ul></li>
 <li>Install necessary packages into the virtual environment using <code>$ pip3 install -r ./doc/requirements.txt</code>. (This may take a couple of minutes)</li>
-<li>Initialize the database with <code>$ python3 db_init.py</code></li>
+<li>Flush any existing database files with <code>$ rm *.db</code></li>
 <li>Start the Flask app using <code>$ python3 app.py</code></li>
 <li>Navigate to <code>127.0.0.1:5000</code> in a browser's URL window, and use Chariot!</li>
 </ol>
