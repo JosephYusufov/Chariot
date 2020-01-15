@@ -85,7 +85,6 @@ def itinerary():
     out_dict = {}
     out_dict["itinerary"] = []
     for iten in useritens:
-        out_dict["itinerary"].append(5)
         itendict = json.loads(iten[1])
         out_dict["itinerary"].append({"name":itendict["name"], "id":random.randint(0,99999999), "date":itendict["itineraryDate"]})
     print(out_dict)
@@ -131,7 +130,7 @@ def itinerary_details(id):
 
 @app.route("/itinerary/details/<int:id>")
 def itinerary_view(id):
-    # return JSON with details for given id
+    command = "SELECT * FROM {} WHERE"
     pass
 
 
