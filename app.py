@@ -160,6 +160,8 @@ def itinerary_view(id):
             if len(iten_dict["events"]) == 0:
                 return json.dumps({"error":"location"})
             out_dict["events"] = iten_dict["events"]
+
+            out_dict["startTime"] = iten_dict["timeStart"]
             # out_dict["events"] = []
             # for x in iten_dict["events"].split(","):
             #     if x == "Zoo":
