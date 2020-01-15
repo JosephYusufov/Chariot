@@ -157,6 +157,7 @@ def itinerary_view(id):
             out_dict["startPoint"] = iten_dict["startPoint"]
 
             # When mapquest_create() is ready, get rid of this loop
+            print( iten_dict["events"] )
             if len(iten_dict["events"]) == 0:
                 return json.dumps({"error":"location"})
             out_dict["events"] = iten_dict["events"]
