@@ -1,4 +1,8 @@
 ### NEW ENTRIES GO AT THE TOP ###
+
+yusufovJ -- 2020-01-15 10:10
+Support for user-provided API keys in key/mapqueest.txt
+
 yusufovJ -- 2020-01-15 09:50
 Retrieved most recent versions of API cards.
 
