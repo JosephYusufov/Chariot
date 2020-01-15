@@ -76,7 +76,7 @@ $.get(api_url, (response) => {
       });
 
       map.addControl(L.mapquest.control());
-      
+      /*
       const start = response.StartPoint;
       
       for(const event of destinations){
@@ -85,6 +85,6 @@ $.get(api_url, (response) => {
           end: event
         });
         start = event;
-      }
+      }*/
   }
     // -- end her
