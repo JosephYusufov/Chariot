@@ -64,11 +64,10 @@
 <div id="map" style="height: 50vh; width: 100%;"></div>
 <h3>Go to Itinerary Generator</h3>
 <a href="/create-itinerary" class="btn btn-outline-dark">Create Itinerary</a>
+<h3>Itineraries</h3>
+<div class="list-group" id="itinerary-container">
 
-<p id="demo"></p>
-
-
-
+</div>
 
 <!-- <button id = "find-me">Show my location</button><br/> -->
 <!-- <p id="status"></p> -->
@@ -106,4 +105,5 @@
   
 <!--   document.querySelector.('#find-me').addEventListener('click', geoFindMe); -->
 <!-- </script> -->
+<script src="{{ url_for('static', filename='welcome_script.js') }}"></script>
 {% endblock %}

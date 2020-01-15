@@ -93,6 +93,16 @@ def itinerary_delete():
     # delete
     pass
 
+@app.route("/itinerary/<int:id>")
+def itinerary_details(id):
+    # just return the template.
+    return render_template("view_itinerary.html")
+
+@app.route("/itinerary/details/<int:id>")
+def itinerary_view(id):
+    # return JSON with details for given id
+    pass
+
 
 @app.route("/register")
 def register():
