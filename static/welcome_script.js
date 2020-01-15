@@ -1,5 +1,7 @@
 $.get("/itinerary/list", (response) => {
-    for(const itinerary of response.itineraries){
+    response = JSON.parse(response);
+    console.log(response);
+    for(const itinerary of response.itinerary){
         const name = itinerary.name;
         const id = itinerary.id;
         const date = itinerary.date;

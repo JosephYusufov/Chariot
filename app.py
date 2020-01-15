@@ -153,8 +153,8 @@ def itinerary_view(id):
             out_dict["events"].append({"name":"italianboi", "address":"1 Cupertino", "time_start":"2020-01-15T02:29:56.647Z", "time_end":"2020-01-15T02:29:56.647Z"})
             return json.dumps(out_dict)
         else:
-            return "no match"
-    return "here"
+            return json.dumps({"error":"user not found"})
+    return json.dumps({"error":"database not initialized, invalid program state"})
 
 
 @app.route("/register")
