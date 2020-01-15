@@ -1,11 +1,221 @@
 {% extends "base.html" %}
 {% block title %}Chariot{% endblock %}
 {% block header %}{% endblock %}
+{% block head %}{% endblock %}
 {% block content %}
-<img alt="Chariot Logo" class="img-fluid mx-auto d-block my-3" style="max-width: 40%" src="./static/img/chariot-logo.png"/>
-<div class="landing">
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada posuere arcu nec euismod. Quisque blandit accumsan nisi vel mollis. Aenean condimentum quis quam ac placerat. Nunc malesuada imperdiet nibh, vitae tempor nisl sagittis a. Integer gravida magna nec dui hendrerit mollis. Etiam et imperdiet sem. Nullam fringilla, lorem in auctor sagittis, mauris lorem ornare diam, non rutrum urna elit quis quam. </p>
-</div>
+        <div id='content'>
+    <p><img src="https://raw.githubusercontent.com/JosephYusufov/Chariot/master/static/img/chariot-logo.png#logo" alt="Chariot Logo" /></p>
+<p><strong>By The Cavalry:</strong> Joseph Yusufov <em>(PM)</em>, William Cao <em>(JavaScript)</em>, Moody Rahman <em>(Backend)</em>, Coby Sontag <em>(API Implementation)</em> </p>
+<hr />
+<h3 id="description">Description</h3>
+<p>Chariot is an interactive itinerary generator that leverages the power of existing mapping utilities to generate an itinerary for its user, facilitating an efficient, convenient, and almost entirely hands-off approach to its users.   </p>
+<p>Chariot allows its user to generate a detailed itinerary given the user’s location, preference, and amount of time available. This itinerary will lead the user on a path to see relevant events, landmarks, and other establishments of interest within the given parameters. </p>
+<h3 id="setup">Setup</h3>
+<p><strong>NOTE:</strong> Python3 is required to use Chariot.</p>
+<ol>
+<li>Clone Chariot onto your machine from this repository using <code>$ git clone https://github.com/JosephYusufov/Chariot.git</code></li>
+<li>Change into the <code>Chariot</code> directory  </li>
+<li>Procure MapQuest API key <a href="https://developer.mapquest.com/">here</a>, and paste the key into <code>keys/mapquest.txt</code></li>
+<li>Create a virtual environment using <code>$ python3 -m venv Chariot</code></li>
+<li>Activate the virtual environment:<ul>
+<li>If using <strong>bash</strong>, run <code>$ . Chariot/bin/activate</code>.</li>
+<li>If using <strong>zsh</strong>, run <code>$ source Chariot/bin/activate</code>.</li></ul></li>
+<li>Install necessary packages into the virtual environment using <code>$ pip3 install -r ./doc/requirements.txt</code>. (This may take a couple of minutes)</li>
+<li>Flush any existing database files with <code>$ rm *.db</code></li>
+<li>Start the Flask app using <code>$ python3 app.py</code></li>
+<li>Navigate to <code>127.0.0.1:5000</code> in a browser's URL window, and use Chariot!</li>
+</ol>
+<h3 id="apis-used">APIs Used</h3>
+<p><a href="https://docs.google.com/document/d/1s0pH9YNA_j9r2tTLWS5gOZhO5M40VFZID99lQ9LsO44/edit">MapQuest Place Search API</a> -- Used for the core itinerary generation function, allowing us to search for specific types of places located around an origin point.   </p>
+<p><a href="https://docs.google.com/document/d/17K1jnj402jsN6UOQUFZAnnpB--rPzZkNBWme44Biltw/edit">MapQuest Static Maps API</a> -- Display directions, locations of points of interest, find current user location.   </p>
+<p><a href="https://docs.google.com/document/d/1HnzToCm_MkkXAyboatQQb0dZiSAYDD04QcwS2UFF4XI/edit">MapQuest Open Geocoding API</a> -- Convert street addresses into Geographic Coordinates (e.g. Longitude and Lattitude), and vice versa.</p>
+
+        </div>
+        <style type='text/css'>body {
+  font: 400 16px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #111;
+  background-color: #fdfdfd;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-feature-settings: "kern" 1;
+  -moz-font-feature-settings: "kern" 1;
+  -o-font-feature-settings: "kern" 1;
+  font-feature-settings: "kern" 1;
+  font-kerning: normal;
+  padding: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    padding: 5px;
+  }
+
+  body > #content {
+    padding: 0px 20px 20px 20px !important;
+  }
+}
+
+body > #content {
+  margin: 0px;
+  max-width: 900px;
+  border: 1px solid #e1e4e8;
+  padding: 10px 40px;
+  padding-bottom: 20px;
+  border-radius: 2px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+hr {
+  color: #bbb;
+  background-color: #bbb;
+  height: 1px;
+  flex: 0 1 auto;
+  margin: 1em 0;
+  padding: 0;
+  border: none;
+}
+
+/**
+ * Links
+ */
+a {
+  color: #0366d6;
+  text-decoration: none; }
+  a:visited {
+    color: #0366d6; }
+  a:hover {
+    color: #0366d6;
+    text-decoration: underline; }
+
+pre {
+  background-color: #f6f8fa;
+  border-radius: 3px;
+  font-size: 85%;
+  line-height: 1.45;
+  overflow: auto;
+  padding: 16px;
+}
+
+/**
+  * Code blocks
+  */
+
+code {
+  background-color: rgba(27,31,35,.05);
+  border-radius: 3px;
+  font-size: 85%;
+  margin: 0;
+  word-wrap: break-word;
+  padding: .2em .4em;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+}
+
+pre > code {
+  background-color: transparent;
+  border: 0;
+  display: inline;
+  line-height: inherit;
+  margin: 0;
+  overflow: visible;
+  padding: 0;
+  word-wrap: normal;
+  font-size: 100%;
+}
+
+
+/**
+ * Blockquotes
+ */
+blockquote {
+  margin-left: 30px;
+  margin-top: 0px;
+  margin-bottom: 16px;
+  border-left-width: 3px;
+  padding: 0 1em;
+  color: #828282;
+  border-left: 4px solid #e8e8e8;
+  padding-left: 15px;
+  font-size: 18px;
+  letter-spacing: -1px;
+  font-style: italic;
+}
+blockquote * {
+  font-style: normal !important;
+  letter-spacing: 0;
+  color: #6a737d !important;
+}
+
+/**
+ * Tables
+ */
+table {
+  border-spacing: 2px;
+  display: block;
+  font-size: 14px;
+  overflow: auto;
+  width: 100%;
+  margin-bottom: 16px;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}
+
+th {
+  font-weight: 600;
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}
+
+tr {
+  background-color: #fff;
+  border-top: 1px solid #c6cbd1;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+
+/**
+ * Others
+ */
+
+img {
+  max-width: 100%;
+}
+
+p {
+  line-height: 24px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #24292e; }
+
+ul {
+  margin-top: 0; }
+
+li {
+  color: #24292e;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5; }
+
+li + li {
+  margin-top: 0.25em; }
+
+* {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color: #24292e; }
+
+a:visited {
+  color: #0366d6; }
+
+h1, h2, h3 {
+  border-bottom: 1px solid #eaecef;
+  color: #111;
+  /* Darker */ }</style>
 
 <!-- <a href="/login"><button>Login</button></a> -->
 {% endblock %}
