@@ -13,7 +13,11 @@ $.get(api_url, (response) => {
     response = JSON.parse(response);
     // response.name = "hi there";
     // response.date = "2020/01/14";
-
+    document.title = response.name;
+    console.log(response);
+    console.log(response.startPoint);
+    $("#startLocation").html("Start Location: " + response.startPoint);
+    $("#startTime").html("Start time: " + response.date);
     $("#itineraryName").html(response.name);
     $("#itineraryDate").html(response.date);
     // gives a list of string of addresses in order of event
