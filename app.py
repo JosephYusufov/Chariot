@@ -265,7 +265,7 @@ def mapquest_create(events_list, starting_point):
             event["time_end"] = "2020-01-15T02:29:56.647Z"
             events_toreturn.append( event )
         else:
-            print("oops")
+            return json.dumps({"error":"invalid event input"})
     return events_toreturn
 
 
