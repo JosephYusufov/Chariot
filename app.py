@@ -157,6 +157,8 @@ def itinerary_view(id):
             out_dict["startPoint"] = iten_dict["startPoint"]
 
             # When mapquest_create() is ready, get rid of this loop
+            if len(iten_dict["events"]) == 0:
+                return json.dumps({"error":"location"})
             out_dict["events"] = iten_dict["events"]
             # out_dict["events"] = []
             # for x in iten_dict["events"].split(","):
@@ -227,6 +229,8 @@ def mapquest_create(events_list, starting_point):
         if x == "Park":
             e = urllib.request.urlopen("https://www.mapquestapi.com/search/v2/radius?origin={}&radius=5&maxMatches=3&ambiguities=ignore&hostedData=mqap.ntpois|group_sic_code=?|799951&outFormat=json&key=yNjXSwjvcoWeXAoUiJw9AZG6MiUvjX8f".format(origin))
             e = json.loads( e.read() )
+            if e["resultsCount"] == 0:
+                return []
             mapquest_event = random.choice( e["searchResults"] )
             print("--- PARK ---")
             print(mapquest_event)
