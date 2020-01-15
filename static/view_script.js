@@ -1,5 +1,10 @@
-let api_url = document.location.href.split("/");
-api_url = "/itinerary/details/" + api_url[api_url.length - 1];
+let id = document.location.href.split("/");
+id = api_url[api_url.length - 1];
+let api_url = "/itinerary/details/" + id;
+
+$("#delete").on("click", ()=>{
+    $.get("/itinerary/delete/" + id);
+});
 
 $.get(api_url, (response) => {
     response = JSON.parse(response);
