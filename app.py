@@ -149,10 +149,15 @@ def itinerary_view(id):
             out_dict["date"] = iten_dict["itineraryDate"]
             out_dict["startPoint"] = iten_dict["startPoint"]
             out_dict["events"] = []
-            for x in iten_dict:
-                pass
-            out_dict["events"].append({"name":"metrozoo", "address":"345 Chambers St", "time_start":"2020-01-15T02:29:56.647Z", "time_end":"2020-01-15T02:29:56.647Z"})
-            out_dict["events"].append({"name":"italianboi", "address":"1 Cupertino", "time_start":"2020-01-15T02:29:56.647Z", "time_end":"2020-01-15T02:29:56.647Z"})
+            for x in iten_dict["events"].split(","):
+                if x == "Zoo":
+                    out_dict["events"].append({"name":"metrozoo", "address":"345 Chambers St", "time_start":"2020-01-15T02:29:56.647Z", "time_end":"2020-01-15T02:29:56.647Z"})
+                if x == "Food":
+                    out_dict["events"].append({"name":"mamma mia meatballs", "address":"One Infinite Loop, CA", "time_start":"2020-01-15T02:29:56.647Z", "time_end":"2020-01-15T02:29:56.647Z"})
+                if x == Park:
+                    out_dict["events"].append({"name":"heroin park", "address":"69 420ST", "time_start":"2020-01-15T02:29:56.647Z", "time_end":"2020-01-15T02:29:56.647Z"}))
+                else:
+                    out_dict["events"].append({"name":"hell", "address":"davey jones locker", "time_start":"2020-01-15T02:29:56.647Z", "time_end":"2020-01-15T02:29:56.647Z"})
             return json.dumps(out_dict)
         else:
             return json.dumps({"error":"user not found"})
