@@ -3,23 +3,36 @@ let id = url_vector[url_vector.length - 1];
 let api_url = "/itinerary/details/" + id;
 
 $("#delete").on("click", ()=>{
-    $.get("/itinerary/delete/" + id);
-    setTimeout(() => {
-        window.location.replace("/welcome");
-    }, 3000); // 3 seconds
+    $.get("/itinerary/delete/" + id, () => {
+        $("#errorContent").append($(`
+            <div id="message" class="alert alert-success alert-dismissible fade show w-100" role="alert">
+              Deleting!
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+        `));
+        setTimeout(() => {
+            window.location.replace("/welcome");
+        }, 3000); // 3 seconds
+    });
 });
 
 $.get(api_url, (response) => {
     response = JSON.parse(response);
     // response.name = "hi there";
     // response.date = "2020/01/14";
+    document.title = response.name;
 
-    $("#itineraryName").html(response.name);
-    $("#itineraryDate").html(response.date);
+    $("#startLocation").html("Start address " + response.startPoint);
+    $("#startTime").html("Start time: " + response.startTime);
     // gives a list of string of addresses in order of event
     const destinations = [];
     let i = 1;
     for(const event of response.events){
+        const timeStart = new Date(event.time_start);
+        const timeEnd = new Date(event.time_end);
+
         destinations.push(event.address);
         const html = `
         <div class="card">
@@ -27,8 +40,8 @@ $.get(api_url, (response) => {
             <h5 class="card-title">${i}. ${event.name}</h5>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">Address: ${event.address}</li>
-              <li class="list-group-item">Start: ${event.time_start}</li>
-              <li class="list-group-item">End: ${event.time_end}</li>
+              <li class="list-group-item">Start: ${timeStart.getHours()}:${timeStart.getMinutes()}</li>
+              <li class="list-group-item">End: ${timeEnd.getHours()}:${timeEnd.getMinutes()}</li>
             </ul>
           </div>
         </div>

@@ -14,6 +14,12 @@ import sqlite3
 import os
 import random
 
+MAPQUEST_KEY = ""
+with open("./keys/mapquest.txt", "r") as file:
+    MAPQUEST_KEY = file.read().replace('\n', '')
+if MAPQUEST_KEY == "":
+    print("ENTER A VALID API KEY INTO keys/mapquest.txt")
+    exit()
 
 class SQLHandler(object):
     """docstring for SQLHandler."""
@@ -157,7 +163,12 @@ def itinerary_view(id):
             out_dict["startPoint"] = iten_dict["startPoint"]
 
             # When mapquest_create() is ready, get rid of this loop
+            print( iten_dict["events"] )
+            if len(iten_dict["events"]) == 0:
+                return json.dumps({"error":"location"})
             out_dict["events"] = iten_dict["events"]
+
+            out_dict["startTime"] = iten_dict["timeStart"]
             # out_dict["events"] = []
             # for x in iten_dict["events"].split(","):
             #     if x == "Zoo":
@@ -225,8 +236,10 @@ def mapquest_create(events_list, starting_point):
     events_toreturn = []
     for x in events_list:
         if x == "Park":
-            e = urllib.request.urlopen("https://www.mapquestapi.com/search/v2/radius?origin={}&radius=5&maxMatches=3&ambiguities=ignore&hostedData=mqap.ntpois|group_sic_code=?|799951&outFormat=json&key=yNjXSwjvcoWeXAoUiJw9AZG6MiUvjX8f".format(origin))
+            e = urllib.request.urlopen("https://www.mapquestapi.com/search/v2/radius?origin={}&radius=5&maxMatches=3&ambiguities=ignore&hostedData=mqap.ntpois|group_sic_code=?|799951&outFormat=json&key={}".format(origin, MAPQUEST_KEY))
             e = json.loads( e.read() )
+            if e["resultsCount"] == 0:
+                return []
             mapquest_event = random.choice( e["searchResults"] )
             print("--- PARK ---")
             print(mapquest_event)
@@ -238,7 +251,7 @@ def mapquest_create(events_list, starting_point):
             event["time_end"] = "2020-01-15T02:29:56.647Z"
             events_toreturn.append( event )
         elif x == "Zoo":
-            e = urllib.request.urlopen("https://www.mapquestapi.com/search/v2/radius?origin={}&radius=5&maxMatches=3&ambiguities=ignore&hostedData=mqap.ntpois|group_sic_code=?|842201&outFormat=json&key=yNjXSwjvcoWeXAoUiJw9AZG6MiUvjX8f".format(origin))
+            e = urllib.request.urlopen("https://www.mapquestapi.com/search/v2/radius?origin={}&radius=5&maxMatches=3&ambiguities=ignore&hostedData=mqap.ntpois|group_sic_code=?|842201&outFormat=json&key={}".format(origin, MAPQUEST_KEY))
             e = json.loads( e.read() )
             mapquest_event = random.choice( e["searchResults"] )
             print("--- ZOO ---")
@@ -251,7 +264,7 @@ def mapquest_create(events_list, starting_point):
             event["time_end"] = "2020-01-15T02:29:56.647Z"
             events_toreturn.append( event )
         elif x == "Food":
-            e = urllib.request.urlopen("https://www.mapquestapi.com/search/v2/radius?origin={}&radius=5&maxMatches=3&ambiguities=ignore&hostedData=mqap.ntpois|group_sic_code=?|581208&outFormat=json&key=yNjXSwjvcoWeXAoUiJw9AZG6MiUvjX8f".format(origin))
+            e = urllib.request.urlopen("https://www.mapquestapi.com/search/v2/radius?origin={}&radius=5&maxMatches=3&ambiguities=ignore&hostedData=mqap.ntpois|group_sic_code=?|581208&outFormat=json&key={}".format(origin, MAPQUEST_KEY))
             e = json.loads( e.read() )
             mapquest_event = random.choice( e["searchResults"] )
             print("--- FOOD ---")
@@ -265,7 +278,7 @@ def mapquest_create(events_list, starting_point):
             event["time_end"] = "2020-01-15T02:29:56.647Z"
             events_toreturn.append( event )
         else:
-            print("oops")
+            return json.dumps({"error":"invalid event input"})
     return events_toreturn
 
 
