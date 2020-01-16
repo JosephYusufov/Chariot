@@ -1,5 +1,10 @@
 ### NEW ENTRIES GO AT THE TOP ###
 
+caoW -- 2020-01-15 21:09
+Clicking cancel in /itinerary/create will bring you back to /welcome
+Styled the list of events chosen and user can also removed what was already chosen
+Show success notification and redirect when user successfully deletes an itinerary
+
 yusufovJ -- 2020-01-15 10:10
 Support for user-provided API keys in key/mapqueest.txt
 
@@ -8,6 +13,12 @@ Retrieved most recent versions of API cards.
 
 yusufovJ -- 2020-01-15 03:50
 Did itinerary generation. Monster commit.
+
+caoW -- 2020-01-14 9:28
+Added page to view existing itinerary and see details on it
+Added bootstrap to the page so it looks nicer and is formatted so the list of events is untestable (not just cluttered
+in a list).
+Added more to documentation on what JSON content needs to be shown for moody. (see doc/
 
 caoW -- 2020-01-13 23:52
 Added boilerplate code for displaying a list of what itineraries the user crated and the ability to view the details of
