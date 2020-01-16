@@ -76,6 +76,12 @@ $.get(api_url, (response) => {
       });
 
       map.addControl(L.mapquest.control());
+
+      L.mapquest.directions().route({
+          start: '350 5th Ave, New York, NY 10118',
+          end: 'One Liberty Plaza, New York, NY 10006'
+      });
+  
       /*
       const startP = response.StartPoint;
       
