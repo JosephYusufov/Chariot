@@ -63,8 +63,21 @@ $("#create").on("click", (e) => {
 $(".dropdown-item").on("click", (e) => {
     const eventToAdd = e.target.innerHTML;
     orderOfEvents.push(eventToAdd);
-    $(`<div>${eventToAdd}</div>`).insertBefore(".dropdown");
+    console.log(orderOfEvents);
+    $("#listEvents").append($(`
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          ${eventToAdd}
+          <input type="button" value="x" class="btn-outline-danger" onclick="handleRemove(this)">
+        </li>
+    `));
 });
+
+const handleRemove = (e) => {
+    let index = Array.from(document.getElementById("listEvents").children).indexOf(e.parentNode);
+    orderOfEvents.splice(index, 1);  //remove that element
+    e.parentNode.remove();
+    console.log(orderOfEvents);
+};
 
 const showMessage = (message, isError) => {
     console.log($("#error"));

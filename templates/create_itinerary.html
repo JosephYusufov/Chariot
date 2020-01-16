@@ -7,20 +7,26 @@
   <div id="errorContainer" class="row">
   </div>
   <div class="row my-3">
-    <div class="col-sm text-center">
-      <input type="text" id="itineraryName" placeholder="Itinerary name"/>
-      <input type="date" id="itineraryDate" placeholder="Date"/>
-      <input type="button" id="create" value="Create"/>
-      <input type="button" id="cancel" value="Cancel"/>
+    <div class="col-sm text-center form-inline" style="justify-content: center">
+      <div class="form-group">
+        <input type="text" class="form-control" id="itineraryName" placeholder="Itinerary name"/>
+      </div>
+      <div class="form-group">
+        <input type="date" class="form-control" id="itineraryDate" placeholder="Date"/>
+      </div>
     </div>
   </div>
   <div class="row">
     <div class="col-sm text-center">
+      <label>List of Events</label>
+      <ul class="list-group" id="listEvents">
+
+      </ul>
       <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn btn-success dropdown-toggle w-100" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Add an event
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" id="asd">Food</a>
           <a class="dropdown-item">Zoo</a>
           <a class="dropdown-item">Park</a>
@@ -29,20 +35,24 @@
     </div>
     <div class="col-sm text-center">
       <div class="form-group">
-        <label for="timeStart">Time Start</label>
-        <input type="time" id="timeStart"/>
+        <label for="timeStart" >Time Start</label>
+        <input type="time" id="timeStart" class="form-control"/>
       </div>
       <div class="form-group">
         <label for="timeEnd">Time end</label>
-        <input type="time" id="timeEnd"/>
+        <input type="time" id="timeEnd" class="form-control"/>
       </div>
     </div>
     <div class="col-sm text-center">
       <div class="form-group">
         <label for="startPoint">Start point:</label>
-        <input type="text" id="startPoint"/>
+        <input type="text" id="startPoint" class="form-control"/>
       </div>
     </div>
+  </div>
+  <div class="row mt-2">
+    <input type="button" class="w-100 btn btn-success" id="create" value="Create"/>
+    <input type="button" class="w-100 btn btn-danger" id="cancel" value="Cancel"/>
   </div>
 </div>
 <script src="{{ url_for('static', filename='create_script.js') }}"></script>
