@@ -23,7 +23,9 @@ Chariot allows its user to generate a detailed itinerary given the user’s loca
 7. Flush any existing database files with `$ rm *.db`
 8. Start the Flask app using `$ python3 app.py`
 9. Navigate to `127.0.0.1:5000` in a browser's URL window, and use Chariot!
- 
+
+### Bugs
+- Apostraphes `'` are not supported in itinerary names. Attempting to give an itinerary a name such as `"Joe's Day Off"` will cause a SQL error.
 ### APIs Used
 [MapQuest Place Search API](https://docs.google.com/document/d/1s0pH9YNA_j9r2tTLWS5gOZhO5M40VFZID99lQ9LsO44/edit) -- Used for the core itinerary generation function, allowing us to search for specific types of places located around an origin point.   
 
