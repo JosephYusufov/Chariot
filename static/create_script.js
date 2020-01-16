@@ -60,6 +60,10 @@ $("#create").on("click", (e) => {
    });
 });
 
+$("#cancel").on("click", () => {
+    window.location.replace("/welcome")
+});
+
 $(".dropdown-item").on("click", (e) => {
     const eventToAdd = e.target.innerHTML;
     orderOfEvents.push(eventToAdd);
