@@ -1,53 +1,28 @@
-### NEW ENTRIES GO AT THE TOP ###
+moodyR -- 2019-12-21 17:56 
+Boilerplate code, login TBD
 
-caoW -- 2020-01-15 21:09
-Clicking cancel in /itinerary/create will bring you back to /welcome
-Styled the list of events chosen and user can also removed what was already chosen
-Show success notification and redirect when user successfully deletes an itinerary
+yusufovJ -- 2019-12-22 02:40 
+Templates working, commented out moody's code in case I missed anything.
+Next step: Get bootsrap in here to make this site look swanky.
 
-yusufovJ -- 2020-01-15 10:10
-Support for user-provided API keys in key/mapqueest.txt
+yusufovJ -- 2019-12-23 01:00
+minimal bootstrap, login and register forms are pretty. Login is fully functional, register needs to be finished. Modeling design after https://zbib.org
 
-yusufovJ -- 2020-01-15 09:50
-Retrieved most recent versions of API cards.
+caoW -- 2019-12-24 18:24
+Made QAF post on JQuery
 
-yusufovJ -- 2020-01-15 03:50
-Did itinerary generation. Monster commit.
+caoW -- 2019-12-25 16:55
+Created first half of wireframe and did some research on APIs
 
-caoW -- 2020-01-14 9:28
-Added page to view existing itinerary and see details on it
-Added bootstrap to the page so it looks nicer and is formatted so the list of events is untestable (not just cluttered
-in a list).
-Added more to documentation on what JSON content needs to be shown for moody. (see doc/
+caoW -- 2020-1-6 0:24
+Added database design to design doc
+Created and added google maps api pdf
 
-caoW -- 2020-01-13 23:52
-Added boilerplate code for displaying a list of what itineraries the user crated and the ability to view the details of
-every itinerary event, name, date, and time.
+yusufovJ -- 2020-01-06 01:00
+Added component map to design.pdf.
 
-yusufovJ -- 2020-01-09 20:10
-Added API Knowledge Base links to the README file in preparation for the deliverable tomorrow.
-
-yusufovJ -- 2020-01-09 09:50
-Created comprehensive README.md, subject to drastic change in the future.
-
-caoW -- 20202-01-09 9:17
-Can set date, name, and list of events the user wants to do and sends it to the server.
-
-yusufovJ -- 2020-01-08 10:30
-MapQuest is working! we have a map on the dashboard.
-
-yusufovJ -- 2020-01-08 09:20
-Must use Leaflet.JS in conjunction with the MapQuest API. Update to design doc and QAF post imminent. 
-
-caoW -- 2020-01-07 23:58
-Updated sitemap to reflect what was discussed in class (redesigned frontend to include all details needed in an itinerary like date start, location start, etc.)
-
-yusufovJ -- 2020-01-07 22:40
-Read up on native HTML geolocation and MapQuest API. added in simple geolocation code in dashboard page.
-
-caoW -- 2020-01-06 16:00
-Updated database and API usage after today's review. We are using MapQuest so we do not to deal with OAUTH and billing
-account for google cloud projects.
+yusufovJ -- 2020-01-06 01:20
+Added flag to doc folder.
 
 ### Deadlines ###
 - Database Schemas and Helper functions: Saturday, 2020-01-11
@@ -57,35 +32,33 @@ account for google cloud projects.
 - Itinerary given an order of activities: Sunday, 2020-01-12 
 - Itinerary Generator given tags, time available: Saturday, 2020-01-18
 
+caoW -- 2020-01-06 16:00
+Updated database and API usage after today's review. We are using MapQuest so we do not to deal with OAUTH and billing
+account for google cloud projects.
 
-yusufovJ -- 2020-01-06 01:20
-Added flag to doc folder.
+yusufovJ -- 2020-01-07 22:40
+Read up on native HTML geolocation and MapQuest API. added in simple geolocation code in dashboard page.
 
-yusufovJ -- 2020-01-06 01:00
-Added component map to design.pdf.
-
-caoW -- 2020-1-6 0:24
-Added database design to design doc
-Created and added google maps api pdf
-
-caoW -- 2019-12-25 16:55
-Created first half of wireframe and did some research on APIs
-
-caoW -- 2019-12-24 18:24
-Made QAF post on JQuery
-
-yusufovJ -- 2019-12-23 01:00
-minimal bootstrap, login and register forms are pretty. Login is fully functional, register needs to be finished. Modeling design after https://zbib.org
-
-yusufovJ -- 2019-12-22 02:40 
-Templates working, commented out moody's code in case I missed anything.
-Next step: Get bootsrap in here to make this site look swanky.
-
-moodyR -- 2019-12-21 17:56 
-Boilerplate code, login TBD
+caoW -- 2020-01-07 23:58
+Updated sitemap to reflect what was discussed in class (redesigned frontend to include all details needed in an itinerary like date start, location start, etc.)
 
 sontagC -- 2020-01-08 8:59
 Added view.html to view individual plans. Began making mapquest helper functions
+
+yusufovJ -- 2020-01-08 09:20
+Must use Leaflet.JS in conjunction with the MapQuest API. Update to design doc and QAF post imminent. 
+
+yusufovJ -- 2020-01-08 10:30
+MapQuest is working! we have a map on the dashboard.
+
+caoW -- 20202-01-09 9:17
+Can set date, name, and list of events the user wants to do and sends it to the server.
+
+yusufovJ -- 2020-01-09 09:50
+Created comprehensive README.md, subject to drastic change in the future.
+
+yusufovJ -- 2020-01-09 20:10
+Added API Knowledge Base links to the README file in preparation for the deliverable tomorrow.
 
 sontagC -- 2020-01-13 8:52
 -Map on site
@@ -93,12 +66,37 @@ sontagC -- 2020-01-13 8:52
 -Class structure for "location" with type, lat, long, etc
 -debugging, print all parts of it
 
+caoW -- 2020-01-13 23:52
+Added boilerplate code for displaying a list of what itineraries the user crated and the ability to view the details of
+every itinerary event, name, date, and time.
+
 sontagC -- 2020-01-14 9:10
 Thus far we have funk that takes origin, radius and # of locations and returns json
 https://developer.mapquest.com/documentation/samples/search/v2/radius/
 
+caoW -- 2020-01-14 9:28
+Added page to view existing itinerary and see details on it
+Added bootstrap to the page so it looks nicer and is formatted so the list of events is untestable (not just cluttered
+in a list).
+Added more to documentation on what JSON content needs to be shown for moody. (see doc/
+
+yusufovJ -- 2020-01-15 03:50
+Did itinerary generation. Monster commit.
+
 sontagC -- 2020-01-15 8:57
 PUT ROUTE ON MAP
 
+yusufovJ -- 2020-01-15 09:50
+Retrieved most recent versions of API cards.
+
+yusufovJ -- 2020-01-15 10:10
+Support for user-provided API keys in key/mapqueest.txt
+
 sontagC -- 2020-01-15 17:51
 Map now shows on view page. Now I need to make it show the right route
+
+caoW -- 2020-01-15 21:09
+Clicking cancel in /itinerary/create will bring you back to /welcome
+Styled the list of events chosen and user can also removed what was already chosen
+Show success notification and redirect when user successfully deletes an itinerary
+
