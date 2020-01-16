@@ -7,7 +7,6 @@
 {% endblock %}
 {% block content %}
 <!-- https://developer.mapquest.com/documentation/searchahead-api/ -->
-<script src="{{ url_for('static', filename='view_script.js') }}"></script>
 <div id="map" style="height: 50vh; width: 100%;"></div>
 <div class="container">
 
@@ -33,5 +32,5 @@
 
   </div>
 </div>
-
+<script src="{{ url_for('static', filename='view_script.js') }}"></script>
 {% endblock %}

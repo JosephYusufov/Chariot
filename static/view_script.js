@@ -1,8 +1,9 @@
-let url_vector = document.location.href.split("/");
-let id = url_vector[url_vector.length - 1];
+let id = document.location.href.split("/");
+id = id[id.length - 1];
 let api_url = "/itinerary/details/" + id;
 
 $("#delete").on("click", ()=>{
+    console.log("clicked");
     $.get("/itinerary/delete/" + id, () => {
         $("#errorContent").append($(`
             <div id="message" class="alert alert-success alert-dismissible fade show w-100" role="alert">
