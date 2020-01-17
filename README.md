@@ -5,6 +5,7 @@
 **By The Cavalry:** Joseph Yusufov *(PM)*, William Cao *(JavaScript)*, Moody Rahman *(Backend)*, Coby Sontag *(API Implementation)* 
 
 ---
+### Demo Video [HERE](https://www.youtube.com/watch?v=7CA9BZ4Mc6Y)
 ### Description
 Chariot is an interactive itinerary generator that leverages the power of existing mapping utilities to generate an itinerary for its user, facilitating an efficient, convenient, and almost entirely hands-off approach to its users.   
     
